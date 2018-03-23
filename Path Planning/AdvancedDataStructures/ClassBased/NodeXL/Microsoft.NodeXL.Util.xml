@@ -1,0 +1,2163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.NodeXL.Util</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.EventUtil">
+             <summary>
+             Utility methods for dealing with events.
+             </summary>
+            
+             <remarks>
+             All methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.EventUtil.FireEvent(System.Object,System.EventHandler)">
+             <summary>
+             Fires an event with an <see cref="T:System.EventHandler"/> signature if
+             appropriate.
+             </summary>
+            
+             <param name="eventHandler">
+             Event handler, or null if no clients have subscribed to the event.
+             </param>
+            
+             <param name="sender">
+             Sender of the event.
+             </param>
+            
+             <remarks>
+             If <paramref name="eventHandler"/> is not null, this method fires the
+             event represented by <paramref name="eventHandler"/>.  Otherwise, it
+             does nothing.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.DateTimeLib.DateTimeUtil2">
+             <summary>
+             Static utility methods involving dates and times.
+             </summary>
+            
+             <remarks>
+             This is a replacement for DateTimeUtil, which should not be used in new
+             projects.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.DateTimeLib.DateTimeUtil2.RemoveTime(System.DateTime)">
+             <summary>
+             Copies a DateTime and sets the copy's time to 12:00 AM.
+             </summary>
+            
+             <param name="dateTime">
+             DateTime to copy.  Does not get modified.
+             </param>
+            
+             <returns>
+             A copy of <paramref name="dateTime" /> with the time set to 12:00 AM.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.DateTimeLib.DateTimeUtil2.UnixTimestampToDateTimeUtc(System.UInt32)">
+             <summary>
+             Converts a Unix timestamp to a DateTime.
+             </summary>
+            
+             <param name="unixTimestampUtc">
+             Unix timestamp to convert, in UTC.
+             </param>
+            
+             <returns>
+             <paramref name="unixTimestampUtc" /> converted to a DateTime, in UTC.
+             </returns>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2">
+             <summary>
+             Represents an item stored on a <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2"/>.
+            
+             <para>
+             The item has a unique <see cref="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Key"/> and a <see cref="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Value"/> that
+             corresponds to the <see cref="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Key"/>.  The items are sorted within the
+             <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2"/> by <see cref="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Value"/>.
+             </para>
+            
+             </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.#ctor">
+             <overloads>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2"/> class.
+             </overloads>
+            
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2"/> class with default values.
+             </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.#ctor(`0,`1)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2"/> class with specified values.
+             </summary>
+            
+             <param name="key">
+             The item's unique key.
+             </param>
+            
+             <param name="value">
+             The item's value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.m_oKey">
+            Key.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.m_oValue">
+            Value.
+        </member>
+        <member name="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Key">
+             <summary>
+             Gets or sets the item's unique key.
+             </summary>
+            
+             <value>
+             The item's unique key, as a TKey.
+             </value>
+        </member>
+        <member name="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2.Value">
+             <summary>
+             Gets or sets the item's value.
+             </summary>
+            
+             <value>
+             The item's value, as a TValue.
+             </value>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil">
+             <summary>
+             String utility methods.
+             </summary>
+            
+             <remarks>
+             This class contains utility methods for dealing with String objects.  All
+             methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.#ctor">
+             <summary>
+             Do not use this constructor.
+             </summary>
+            
+             <remarks>
+             Do not use this constructor.  All StringUtil methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.IsEmpty(System.String)">
+             <summary>
+             Returns true if a String is null or has a length of 0.
+             </summary>
+            
+             <param name="sString">
+             String to test.
+             </param>
+            
+             <returns>
+             true if the string is null or has a length of 0.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.AssertNotEmpty(System.String)">
+             <summary>
+             Asserts if a String is null or has a length of 0.  Debug-only.
+             </summary>
+            
+             <param name="sString">
+             String to test.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.MakePlural(System.String,System.Int32)">
+             <summary>
+             Adds an "s" to a noun if the noun should be plural.
+             </summary>
+            
+             <param name="sNoun">
+             Noun to make plural if necessary.  Sample: "orange".
+             </param>
+            
+             <param name="iCount">
+             Number of things that <paramref name="sNoun" /> describes.  Sample: 2.
+             </param>
+            
+             <returns>
+             <paramref name="sNoun" /> with "s" appended to it if necessary.
+             Sample: "oranges".
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.CopyStringArray(System.String[])">
+             <summary>
+             Creates a deep copy of an array of strings.
+             </summary>
+            
+             <param name="asArrayToCopy">
+             Array of zero or more strings to copy.
+             </param>
+            
+             <returns>
+             A new array containing copies of the strings in <paramref
+             name="asArrayToCopy" />.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.CreateArrayOfEmptyStrings(System.Int32)">
+             <summary>
+             Creates an array of empty strings.
+             </summary>
+            
+             <param name="iEmptyStrings">
+             Number of empty strings to store in the array.
+             </param>
+            
+             <returns>
+             An array of <paramref name="iEmptyStrings" /> elements, each of which
+             contains String.Empty.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.BytesToPrintableAscii(System.Byte[],System.Char)">
+             <summary>
+             Converts an array of bytes to a printable ASCII string.
+             </summary>
+            
+             <param name="abtBytes">
+             Array of bytes to convert.  Can't be null.
+             </param>
+            
+             <param name="cReplacementCharacter">
+             Character to replace non-printable characters with.  Must have a value
+             less than or equal to 127.
+             </param>
+            
+             <remarks>
+             This method replaces any bytes greater than 127 with <paramref
+             name="cReplacementCharacter" />, then replaces any non-printable ASCII
+             characters with the same replacement character.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.ReplaceNonPrintableAsciiCharacters(System.String,System.Char)">
+             <summary>
+             Replaces non-printable ASCII characters with a specified character.
+             </summary>
+            
+             <param name="sString">
+             String that may include non-printable ASCII characters.  Can't be null.
+             </param>
+            
+             <param name="cReplacementCharacter">
+             Character to replace them with.
+             </param>
+            
+             <returns>
+             <paramref name="sString" /> with non-printable characters replaced with
+             <paramref name="cReplacementCharacter" />.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.StringUtil.ReplaceControlCharacters(System.String,System.Char)">
+             <summary>
+             Replaces Unicode control characters with a specified character.
+             </summary>
+            
+             <param name="sString">
+             String that may include control characters.  Can't be null.
+             </param>
+            
+             <param name="cReplacementCharacter">
+             Character to replace them with.
+             </param>
+            
+             <returns>
+             <paramref name="sString" /> with control characters replaced with
+             <paramref name="cReplacementCharacter" />.
+             </returns>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle">
+            <summary>
+            Indicates how <see cref="M:Microsoft.Research.CommunityTechnologies.AppLib.EnumUtil.SplitName(System.String,Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle)"/> capitalizes words in a
+            split enum name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle.AllWordsStartLowerCase">
+            "DaysActiveInNewsgroup" gets converted to "days active in newsgroup",
+            for example.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle.AllWordsStartUpperCase">
+            "DaysActiveInNewsgroup" gets converted to "Days Active In Newsgroup",
+            for example.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle.FirstWordStartsUpperCase">
+            "DaysActiveInNewsgroup" gets converted to "Days active in newsgroup",
+            for example.
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.EnumUtil">
+            <summary>
+            Static utility methods involving Enums.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.EnumUtil.#ctor">
+            <summary>
+            Do not call this constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.EnumUtil.SplitName(System.String,Microsoft.Research.CommunityTechnologies.AppLib.EnumSplitStyle)">
+             <summary>
+             Splits words in an enum name.
+             </summary>
+            
+             <param name="sEnumName">
+             Enum name that needs to be split.
+             </param>
+            
+             <param name="eEnumSplitStyle">
+             Indicates how the split words will be capitalized.
+             </param>
+            
+             <returns>
+             <paramref name="sEnumName" /> with separated words.
+             </returns>
+            
+             <remarks>
+             This method inserts a space before each upper-case letter in
+             <paramref name="sEnumName" />.  If <paramref name="eEnumSplitStyle" />
+             is AllWordsStartLowerCase, for example, the name
+             "DaysActiveInNewsgroup" gets converted to "days active in newsgroup".
+             </remarks>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil">
+             <summary>
+             Utility methods for working with numbers.
+             </summary>
+            
+             <remarks>
+             All methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.CountDecimalPlaces(System.Decimal)">
+             <summary>
+             Counts the number of decimal places in a Decimal.
+             </summary>
+            
+             <param name="theDecimal">
+             The Decimal to count decimal places for.  Sample: 1.2345.
+             </param>
+            
+             <returns>
+             The number of decimal places in <paramref name="theDecimal" />.
+             Sample: 4.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.GetDecimalFraction(System.Decimal)">
+             <summary>
+             Returns the fractional part of a Decimal.
+             </summary>
+            
+             <param name="theDecimal">
+             The Decimal to get the fractional part for.  Sample: 1.2345.
+             </param>
+            
+             <returns>
+             The fractional part of <paramref name="theDecimal" />.  Sample: 0.2345.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.DegreesToRadians(System.Double)">
+             <summary>
+             Converts an angle from degrees to radians.
+             </summary>
+            
+             <param name="degrees">
+             An angle in degrees.
+             </param>
+            
+             <returns>
+             The angle in radians.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.RadiansToDegrees(System.Double)">
+             <summary>
+             Converts an angle from radians to degrees.
+             </summary>
+            
+             <param name="radians">
+             An angle in radians.
+             </param>
+            
+             <returns>
+             The angle in degrees.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.ParseCultureInvariantInt32(System.String)">
+             <summary>
+             Parses a string containing an Int32 using the invariant culture.
+             </summary>
+            
+             <param name="s">
+             String containing an Int32, formatted with the invariant culture.
+             </param>
+            
+             <returns>
+             The parsed Int32.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.ParseCultureInvariantSingle(System.String)">
+             <summary>
+             Parses a string containing a Single using the invariant culture.
+             </summary>
+            
+             <param name="s">
+             String containing a Single, formatted with the invariant culture.
+             </param>
+            
+             <returns>
+             The parsed Single.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.ParseCultureInvariantDouble(System.String)">
+             <summary>
+             Parses a string containing a Double using the invariant culture.
+             </summary>
+            
+             <param name="s">
+             String containing a Double, formatted with the invariant culture.
+             </param>
+            
+             <returns>
+             The parsed Double.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.TryParseCultureInvariantInt32(System.String,System.Int32@)">
+             <summary>
+             Attempts to parse a string containing an Int32 using the invariant
+             culture.
+             </summary>
+            
+             <param name="s">
+             String that might contain an Int32, formatted with the invariant
+             culture.
+             </param>
+            
+             <param name="result">
+             Where the parsed Int32 gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the string was successfully parsed.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.TryParseCultureInvariantUInt32(System.String,System.UInt32@)">
+             <summary>
+             Attempts to parse a string containing a UInt32 using the invariant
+             culture.
+             </summary>
+            
+             <param name="s">
+             String that might contain a UInt32, formatted with the invariant
+             culture.
+             </param>
+            
+             <param name="result">
+             Where the parsed UInt32 gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the string was successfully parsed.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.TryParseCultureInvariantSingle(System.String,System.Single@)">
+             <summary>
+             Attempts to parse a string containing a Single using the invariant
+             culture.
+             </summary>
+            
+             <param name="s">
+             String that might contain a Single, formatted with the invariant
+             culture.
+             </param>
+            
+             <param name="result">
+             Where the parsed Single gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the string was successfully parsed.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.MathUtil.TryParseCultureInvariantDouble(System.String,System.Double@)">
+             <summary>
+             Attempts to parse a string containing a Double using the invariant
+             culture.
+             </summary>
+            
+             <param name="s">
+             String that might contain a Double, formatted with the invariant
+             culture.
+             </param>
+            
+             <param name="result">
+             Where the parsed Double gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the string was successfully parsed.
+             </returns>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat">
+            <summary>
+            Specifies the format of an Excel table column.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat.Number">
+            <summary>
+            The column contains numbers.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat.Date">
+            <summary>
+            The column contains dates.  Sample: 1/1/2008.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat.Time">
+            <summary>
+            The column contains times.  Sample: 3:40 PM.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat.DateAndTime">
+            <summary>
+            The column contains date/times.  Sample: 1/1/2008 3:40 pm.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ExcelColumnFormat.Other">
+            <summary>
+            The column contains something else.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2">
+             <summary>
+             Represents a binary heap.
+            
+             <para>
+             The heap stores zero or more items, each of which has a unique key and a
+             value that corresponds to the key.  The items are ordered by value.  The
+             order can be either descending (for a max heap) or ascending (for a min
+             heap), depending on the IComparer interface passed to the constructor.
+             </para>
+            
+             </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.#ctor(System.Collections.Generic.IComparer{`1})">
+             <overloads>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2"/> class.
+             </overloads>
+            
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2"/> class with a default initial
+             capacity.
+             </summary>
+            
+             <param name="valueComparer">
+             IComparer interface for comparing values.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.#ctor(System.Int32,System.Collections.Generic.IComparer{`1})">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2"/> class with a specified initial
+             capacity.
+             </summary>
+            
+             <param name="initialCapacity">
+             Initial capacity.  Must be non-negative.
+             </param>
+            
+             <param name="valueComparer">
+             IComparer interface for comparing values.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.Add(`0,`1)">
+             <summary>
+             Adds an item to the binary heap.
+             </summary>
+            
+             <param name="key">
+             The item's unique key.
+             </param>
+            
+             <param name="value">
+             The item's value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetTop(Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@)">
+             <summary>
+             Attempts to get the item at the top of the binary heap without removing
+             it.
+             </summary>
+            
+             <param name="top">
+             Where the top item gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the binary heap has a top item, false if the binary heap is
+             empty.
+             </returns>
+            
+             <remarks>
+             The top item is either the largest or smallest item in the heap,
+             depending on the IComparer interface passed to the constructor.
+             </remarks>
+            
+             <seealso cref="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.RemoveTop"/>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.RemoveTop">
+             <summary>
+             Removes the item at the top of the binary heap.
+             </summary>
+            
+             <returns>
+             The item at the top of the heap, as a <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem`2"/>.
+             </returns>
+            
+             <remarks>
+             The returned item is either the largest or smallest item in the heap,
+             depending on the IComparer interface passed to the constructor.
+            
+             <para>
+             An exception is thrown if the binary heap is empty.
+             </para>
+            
+             </remarks>
+            
+             <seealso cref="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetTop(Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@)"/>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.Remove(`0)">
+             <summary>
+             Removes a specified item from the binary heap.
+             </summary>
+            
+             <param name="key">
+             The unique key of the item to remove.
+             </param>
+            
+             <remarks>
+             If the item doesn't exist, this method does nothing.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.UpdateValue(`0,`1)">
+             <summary>
+             Updates the value of an existing item in the binary heap.
+             </summary>
+            
+             <param name="existingKey">
+             The existing item's key.
+             </param>
+            
+             <param name="newValue">
+             The item's new value.
+             </param>
+            
+             <remarks>
+             An exception is thrown if the item doesn't exist.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.Clear">
+            <summary>
+            Removes all items from the binary heap.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.GetExistingItemIndex(`0,System.String)">
+             <summary>
+             Gets the index of an existing item in the binary heap.
+             </summary>
+            
+             <param name="oExistingKey">
+             The existing item's key.
+             </param>
+            
+             <param name="sMethodName">
+             Name of the calling method.
+             </param>
+            
+             <returns>
+             The index of the specified item.
+             </returns>
+            
+             <remarks>
+             An exception is thrown if the item doesn't exist.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetLeftChild(System.Int32,Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@,System.Int32@)">
+             <summary>
+             Attempts to get an item's left child.
+             </summary>
+            
+             <param name="iItemIndex">
+             The item's index.
+             </param>
+            
+             <param name="oLeftChildItem">
+             Where the item's left child gets stored if true is returned.
+             </param>
+            
+             <param name="iLeftChildIndex">
+             Where the item's left child index gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the item has a left child.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetRightChild(System.Int32,Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@,System.Int32@)">
+             <summary>
+             Attempts to get an item's right child.
+             </summary>
+            
+             <param name="iItemIndex">
+             The item's index.
+             </param>
+            
+             <param name="oRightChildItem">
+             Where the item's right child gets stored if true is returned.
+             </param>
+            
+             <param name="iRightChildIndex">
+             Where the item's right child index gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the item has a right child.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetParent(System.Int32,Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@,System.Int32@)">
+             <summary>
+             Attempts to get an item's parent.
+             </summary>
+            
+             <param name="iItemIndex">
+             The item's index.
+             </param>
+            
+             <param name="oParentItem">
+             Where the item's parent gets stored if true is returned.
+             </param>
+            
+             <param name="iParentIndex">
+             Where the item's parent index gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the item has a parent.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.SiftUp(System.Int32)">
+             <summary>
+             Sifts the binary heap up from a specified index.
+             </summary>
+            
+             <param name="iItemIndex">
+             The index of the item to start at.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.SiftDown(System.Int32)">
+             <summary>
+             Sifts the binary heap down from a specified index.
+             </summary>
+            
+             <param name="iItemIndex">
+             The index of the item to start at.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.SwapItems(System.Int32,System.Int32)">
+             <summary>
+             Swaps two items.
+             </summary>
+            
+             <param name="iItem1Index">
+             The index of the first item to swap.
+             </param>
+            
+             <param name="iItem2Index">
+             The index of the second item to swap.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.TryGetLeftOrRightChild(System.Int32,System.Boolean,Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeapItem{`0,`1}@,System.Int32@)">
+             <summary>
+             Attempts to get an item's left or right child.
+             </summary>
+            
+             <param name="iItemIndex">
+             The item's index.
+             </param>
+            
+             <param name="bLeftChild">
+             true to get the item's left child, false to get the item's right child.
+             </param>
+            
+             <param name="oLeftOrRightChildItem">
+             Where the item's left or right child gets stored if true is returned.
+             </param>
+            
+             <param name="iLeftOrRightChildIndex">
+             Where the item's left or right child index gets stored if true is
+             returned.
+             </param>
+            
+             <returns>
+             true if the item has a left or right child.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.m_oItems">
+            List of items in the heap.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.m_oValueComparer">
+            IComparer interface for comparing keys.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.m_oItemDictionary">
+            The key is the BinaryHeapItem.Key and the value is the BinaryHeapItem's
+            index within m_oItems.  This is used to update an item's value without
+            having to do a linear search for the item.
+        </member>
+        <member name="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.Count">
+             <summary>
+             Gets the number of items in the binary heap.
+             </summary>
+            
+             <value>
+             The number of items in the heap, as an Int32.
+             </value>
+        </member>
+        <member name="P:Microsoft.Research.CommunityTechnologies.AppLib.BinaryHeap`2.ClassName">
+             <summary>
+             Gets the full name of this class.
+             </summary>
+            
+             <value>
+             The full name of this class, suitable for use in error messages.
+             </value>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2">
+             <summary>
+             XML utility methods.
+             </summary>
+            
+             <remarks>
+             This class contains utility methods for dealing with XML.  All methods are
+             static.
+            
+             <para>
+             This is an improved replacement for XmlUtil, which should not be used in
+             new projects.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SelectRequiredSingleNode(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Selects a required XML node.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <returns>
+             The selected node.
+             </returns>
+            
+             <remarks>
+             If the specified node is missing, an XmlException is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SelectRequiredSingleNodeAsString(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Selects a required XML node and gets its String value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <returns>
+             The selected node's String value.
+             </returns>
+            
+             <remarks>
+             If the specified node is missing or its value is an empty string, an
+             XmlException is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SelectRequiredSingleNodeAsInt32(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Selects a required XML node and gets its Int32 value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <returns>
+             The selected node's Int32 value.
+             </returns>
+            
+             <remarks>
+             If the specified node is missing or its value isn't an Int32, an
+             XmlException is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SelectRequiredSingleNodeAsDouble(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Selects a required XML node and gets its Double value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <returns>
+             The selected node's Double value.
+             </returns>
+            
+             <remarks>
+             If the specified node is missing or its value isn't a Double, an
+             XmlException is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SelectRequiredSingleNodeAsBoolean(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Selects a required XML node and gets its Boolean value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <returns>
+             The selected node's Boolean value.
+             </returns>
+            
+             <remarks>
+             If the specified node is missing or its value isn't a Boolean, an
+             XmlException is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNode(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.Xml.XmlNode@)">
+             <summary>
+             Attempts to select an XML node.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="selectedNode">
+             Where the selected node gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the specified node was found.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNodeAsString(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.String@)">
+             <summary>
+             Attempts to select an XML node and get its String value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="value">
+             Where the selected node's String value gets stored if true is returned.
+             If false is returned, this gets set to null.
+             </param>
+            
+             <returns>
+             true if the specified node was found and its value was a non-empty
+             string.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNodeAsInt32(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.Int32@)">
+             <summary>
+             Attempts to select an XML node and get its Int32 value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="value">
+             Where the selected node's Int32 value gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the specified node was found and its value was an Int32.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNodeAsUInt32(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.UInt32@)">
+             <summary>
+             Attempts to select an XML node and get its UInt32 value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="value">
+             Where the selected node's UInt32 value gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the specified node was found and its value was a UInt32.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNodeAsDouble(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.Double@)">
+             <summary>
+             Attempts to select an XML node and get its Double value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="value">
+             Where the selected node's Double value gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the specified node was found and its value was a Double.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.TrySelectSingleNodeAsBoolean(System.Xml.XmlNode,System.String,System.Xml.XmlNamespaceManager,System.Boolean@)">
+             <summary>
+             Attempts to select an XML node and get its Boolean value.
+             </summary>
+            
+             <param name="node">
+             Node to select from.
+             </param>
+            
+             <param name="xPath">
+             XPath expression.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             NamespaceManager to use, or null to not use one.
+             </param>
+            
+             <param name="value">
+             Where the selected node's Boolean value gets stored if true is
+             returned.
+             </param>
+            
+             <returns>
+             true if the specified node was found and its value was a Boolean.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.AppendNewNode(System.Xml.XmlNode,System.String,System.String)">
+             <summary>
+             Creates a new XML node with an optional namespace and appends it to a
+             parent node.
+             </summary>
+            
+             <param name="parentNode">
+             Node to append the new node to.
+             </param>
+             
+             <param name="childName">
+             Name of the new node.
+             </param>
+            
+             <param name="namespaceUri">
+             Optional namespace URI of the new node.  If null or empty, no namespace
+             is used.
+             </param>
+            
+             <returns>
+             The new node.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.XmlUtil2.SetAttributes(System.Xml.XmlNode,System.String[])">
+             <summary>
+             Sets multiple attributes on an XML node.
+             </summary>
+            
+             <param name="node">
+             XmlNode.  Node to set attributes on.
+             </param>
+            
+             <param name="nameValuePairs">
+             String[].  One or more pairs of strings.  The first string in each pair
+             is an attribute name and the second is the attribute value.
+             </param>
+            
+             <remarks>
+             This sets multiple attributes on an XML node in one call.  It's an
+             alternative to calling <see cref="M:System.Xml.XmlElement.SetAttribute(System.String,System.String)"/> repeatedly.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil">
+             <summary>
+             Set of static methods that perform graphics operations not available
+             directly through GDI+.
+             </summary>
+            
+             <remarks>
+             Do not try to instantiate an object of this type.  All methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.#ctor">
+             <summary>
+             Do not use this contructor.
+             </summary>
+            
+             <remarks>
+             All methods on this class are static, so there is no need to create a
+             GraphicsUtil object.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.PixelsToPoints(System.Drawing.Graphics,System.Single,System.Single,System.Single@,System.Single@)">
+             <summary>
+             Converts a height and width from pixels to points.
+             </summary>
+            
+             <param name="oGraphics">
+             Object that will do the conversion.
+             </param>
+            
+             <param name="fWidthPx">
+             Width in pixels.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fHeightPx">
+             Height in pixels.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fWidthPt">
+             Where the width in points gets stored.
+             </param>
+            
+             <param name="fHeightPt">
+             Where the height in points gets stored.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.PointsToPixels(System.Drawing.Graphics,System.Single,System.Single,System.Single@,System.Single@)">
+             <summary>
+             Converts a height and width from points to pixels.
+             </summary>
+            
+             <param name="oGraphics">
+             Object that will do the conversion.
+             </param>
+            
+             <param name="fWidthPt">
+             Width in points.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fHeightPt">
+             Height in points.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fWidthPx">
+             Where the width in pixels gets stored.
+             </param>
+            
+             <param name="fHeightPx">
+             Where the height in pixels gets stored.
+             </param>
+            
+             <remarks>
+             There are two versions of this method.  This version converts to
+             floating-point pixels.  The other converts to integer pixels.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.PointsToPixels(System.Drawing.Graphics,System.Single,System.Single,System.Int32@,System.Int32@)">
+             <summary>
+             Converts a height and width from points to pixels.
+             </summary>
+            
+             <param name="oGraphics">
+             Object that will do the conversion.
+             </param>
+            
+             <param name="fWidthPt">
+             Width in points.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fHeightPt">
+             Height in points.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="iWidthPx">
+             Where the width in pixels gets stored.
+             </param>
+            
+             <param name="iHeightPx">
+             Where the height in pixels gets stored.
+             </param>
+            
+             <remarks>
+             There are two versions of this method.  This version converts to
+             integer pixels.  The other converts to floating-point pixels.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)">
+             <summary>
+             Draws a circle defined by a center point and radius.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oPen">
+             Pen to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the circle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the circle's center.
+             </param>
+            
+             <param name="fRadius">
+             Radius of the circle.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillCircle(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills the interior of a circle defined by a center point and radius.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oBrush">
+             Brush to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the circle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the circle's center.
+             </param>
+            
+             <param name="fRadius">
+             Radius of the circle.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillCircle3D(System.Drawing.Graphics,System.Drawing.Color,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills the interior of a circle defined by a center point and radius
+             using 3-D shading.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oColor">
+             Color to use.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the circle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the circle's center.
+             </param>
+            
+             <param name="fRadius">
+             Radius of the circle.  Must be greater than zero.
+             </param>
+            
+             <remarks>
+             The circle is shaded to make it look as if it's a 3-D sphere.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawSquare(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)">
+             <summary>
+             Draws a square defined by a center point and half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oPen">
+             Pen to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the square's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the square's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square.
+             </param>
+            
+             <remarks>
+             The square is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillSquare(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills the interior of a square defined by a center point and
+             half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oBrush">
+             Brush to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the square's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the square's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square.
+             </param>
+            
+             <remarks>
+             The square is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillCircle(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillSquare3D(System.Drawing.Graphics,System.Drawing.Color,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills the interior of a square using 3-D shading.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oColor">
+             Color to use.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the square's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the square's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square.
+             </param>
+            
+             <remarks>
+             The square is shaded to make it look as if it's 3-D.
+            
+             <para>
+             The square is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillCircle(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)"/>.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawDiamond(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)">
+             <summary>
+             Draws a diamond defined by a center point and half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oPen">
+             Pen to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the diamond.
+             </param>
+            
+             <remarks>
+             The diamond is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillDiamond(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills a diamond defined by a center point and half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oBrush">
+             Brush to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the diamond.
+             </param>
+            
+             <remarks>
+             The diamond is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawTriangle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)">
+             <summary>
+             Draws an equilateral triangle defined by a center point and half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oPen">
+             Pen to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square that bounds the triangle.
+             </param>
+            
+             <remarks>
+             The triangle is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillTriangle(System.Drawing.Graphics,System.Drawing.Brush,System.Single,System.Single,System.Single)">
+             <summary>
+             Fills an equilateral triangle defined by a center point and half-width.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oBrush">
+             Brush to draw with.
+             </param>
+            
+             <param name="fXCenter">
+             x-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square that bounds the triangle.
+             </param>
+            
+             <remarks>
+             The triangle is specified as a center point and half-width to make this
+             method compatible with <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawCircle(System.Drawing.Graphics,System.Drawing.Pen,System.Single,System.Single,System.Single)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.Draw3DHorizontalLine(System.Drawing.Graphics,System.Single,System.Single,System.Single)">
+             <summary>
+             Draws a 3-dimensional horizontal line.
+             </summary>
+            
+             <param name="oGraphics">
+             Objects to draw with.
+             </param>
+            
+             <param name="fLeft">
+             x-coordinate of the left end of the line.
+             </param>
+            
+             <param name="fTop">
+             y-coordinate of the left end of the line.
+             </param>
+            
+             <param name="fRight">
+             x-coordinate of the right end of the line.
+             </param>
+            
+             <returns>
+             The height of the line.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.Clear(System.Drawing.Graphics,System.Drawing.Color)">
+             <summary>
+             Clears the entire drawing surface and fills it with the specified
+             background color.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oColor">
+             <see cref="T:System.Drawing.Color"/> structure that represents the background color of
+             the drawing surface. 
+             </param>
+            
+             <remarks>
+             This adds a GDI bug workaround to <see cref="M:System.Drawing.Graphics.Clear(System.Drawing.Color)"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.CreateRoundedRectangleGraphicsPath(System.Drawing.Rectangle,System.Int32)">
+             <summary>
+             Creates a GraphicsPath that describes a rectangle with rounded corners.
+             </summary>
+            
+             <param name="oRectangle">
+             Rectangle to add rounded corners to.
+             </param>
+            
+             <param name="iCornerRadius">
+             Radius of the rectangle's corners.
+             </param>
+            
+             <returns>
+             A new GraphicsPath.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.FillTextRectangle(System.Drawing.Graphics,System.Drawing.Rectangle,System.Boolean)">
+             <summary>
+             Fills the interior of a rectangle that will contain text.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oRectangle">
+             Rectangle to draw on.  If empty, this method does nothing.
+             </param>
+            
+             <param name="bTextIsSelected">
+             true if the text is selected.
+             </param>
+            
+             <remarks>
+             This method fills the interior of a rectangle with either the system
+             window or system highlight color, depending on whether the text is
+             selected.  Call this method before you draw the text.  When you draw
+             the text, use SystemBrushes.HighlightText or SystemBrushes.WindowText
+             as the text color.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.RadiusToArea(System.Double)">
+             <summary>
+             Returns the area of a circle given its radius.
+             </summary>
+            
+             <param name="dRadius">
+             The circle's radius.
+             </param>
+            
+             <returns>
+             The circle's area.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.AreaToRadius(System.Double)">
+             <summary>
+             Returns the radius of a circle given its area.
+             </summary>
+            
+             <param name="dArea">
+             The circle's area.
+             </param>
+            
+             <returns>
+             The circle's radius.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.SquareFromCenterAndHalfWidth(System.Single,System.Single,System.Single)">
+             <summary>
+             Returns a square given a center point and half-width.
+             </summary>
+            
+             <param name="fXCenter">
+             x-coordinate of the square's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the square's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square.
+             </param>
+            
+             <returns>
+             The specified square.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DiamondFromCenterAndHalfWidth(System.Single,System.Single,System.Single)">
+             <summary>
+             Returns an array of points that define a diamond given a center point
+             and half-width.
+             </summary>
+            
+             <param name="fXCenter">
+             x-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the diamond.
+             </param>
+            
+             <returns>
+             The specified diamond.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.GetDiamondEdgeMidpoints(System.Single,System.Single,System.Single)">
+             <summary>
+             Returns an array of points on the midpoints of a diamond's edges given
+             a center point and half-width.
+             </summary>
+            
+             <param name="fXCenter">
+             x-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the diamond's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the diamond.
+             </param>
+            
+             <returns>
+             The midpoints of the specified diamond.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.TriangleFromCenterAndHalfWidth(System.Single,System.Single,System.Single)">
+             <summary>
+             Returns an array of points that define an equilateral triangle given a
+             center point and half-width.
+             </summary>
+            
+             <param name="fXCenter">
+             x-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square that bounds the triangle.
+             </param>
+            
+             <returns>
+             The specified triangle.  The order of the points is top, lower-right,
+             lower-left.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.GetTriangleEdgeMidpoints(System.Single,System.Single,System.Single)">
+             <summary>
+             Returns an array of points on the midpoints of an equilateral
+             triangle's edges given a center point and half-width.
+             </summary>
+            
+             <param name="fXCenter">
+             x-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fYCenter">
+             y-coordinate of the triangle's center.
+             </param>
+            
+             <param name="fHalfWidth">
+             One half the width of the square that bounds the triangle.
+             </param>
+            
+             <returns>
+             The midpoints of the specified triangle.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.RectangleFToRectangle(System.Drawing.RectangleF,System.Int32)">
+             <summary>
+             Converts a RectangleF to a Rectangle.
+             </summary>
+            
+             <param name="oRectangle">
+             Rectangle to convert.
+             </param>
+             
+             <param name="iPenWidthPx">
+             Width of the pen that will be used to draw the rectangle.
+             </param>
+            
+             <returns>
+             Converted rectangle.
+             </returns>
+            
+             <remarks>
+             This method converts a floating-point RectangleF to an integer
+             Rectangle, compensating for some GDI oddities in the process.
+            
+             <para>
+             If precise rectangle drawing is required, the caller should convert
+             all RectangleF objects to Rectangles using this method, then use the
+             Graphics.DrawRectangle(Pen, Rectangle) method to draw them.  The
+             floating-point version of Graphics.DrawRectangle() should not be used.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.LineSegmentsIntersect(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+             <summary>
+             Determines whether two line segments intersect.
+             </summary>
+            
+             <param name="endpointA1">
+             The first endpoint on the first line segment.
+             </param>
+             
+             <param name="endpointA2">
+             The second endpoint on the first line segment.
+             </param>
+             
+             <param name="endpointB1">
+             The first endpoint on the second line segment.
+             </param>
+             
+             <param name="endpointB2">
+             The second endpoint on the second line segment.
+             </param>
+             
+             <returns>
+             true if the two line segments intersect.
+             </returns>
+            
+             <remarks>
+             If the two line segments are coincident (parallel with overlap), true
+             is returned.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.SaveHighQualityImage(System.Drawing.Image,System.String,System.Drawing.Imaging.ImageFormat)">
+             <summary>
+             Saves an Image object to a specified file in a specified format using
+             high quality settings.
+             </summary>
+            
+             <param name="oImage">
+             Image to save.
+             </param>
+             
+             <param name="sFileName">
+             Full path of the file to save to.
+             </param>
+            
+             <param name="eImageFormat">
+             File format.
+             </param>
+            
+             <remarks>
+             Use this instead of Image.Save(filename, format) if you want a high-
+             quality image.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.SaveJpegImage(System.Drawing.Image,System.String,System.Int32)">
+             <summary>
+             Saves an image to a JPEG file with a specified quality level.
+             </summary>
+            
+             <param name="oImage">
+             Image to save.
+             </param>
+             
+             <param name="sFileName">
+             Full path of the file to save to.
+             </param>
+            
+             <param name="iQuality">
+             Quality level to use.  I THINK this can be from 1 to 100; the
+             documentation is not clear.
+             </param>
+            
+             <remarks>
+             Image.Save(..., ImageFormat.Jpeg) uses a low quality by default.  This
+             method allows the quality to be specified.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DrawErrorStringOnGraphics(System.Drawing.Graphics,System.Drawing.Rectangle,System.String)">
+             <summary>
+             Draws an error string on a Graphics object.
+             </summary>
+            
+             <param name="oGraphics">
+             Object to draw on.
+             </param>
+            
+             <param name="oRectangle">
+             Rectangle to draw on.
+             </param>
+            
+             <param name="sString">
+             String to draw.
+             </param>
+            
+             <remarks>
+             This can be used to draw error strings on bitmaps in a uniform manner.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.GetImageCodecInfoForMimeType(System.String)">
+             <summary>
+             Gets the ImageCodecInfo object for a specified MIME type.
+             </summary>
+            
+             <param name="sMimeType">
+             MIME type.
+             </param>
+            
+             <remarks>
+             An exception is thrown if the requested object isn't found.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.ConvertPixelsAndPoints(System.Boolean,System.Drawing.Graphics,System.Single,System.Single,System.Single@,System.Single@)">
+             <summary>
+             Converts a height and width from pixels to points, or vice versa.
+             </summary>
+            
+             <param name="bPixelsToPoints">
+             true to convert pixels to points, false to convert points to pixels.
+             </param>
+            
+             <param name="oGraphics">
+             Object that will do the conversion.
+             </param>
+            
+             <param name="fWidthIn">
+             Input width.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fHeightIn">
+             Input height.  Must be greater than or equal to zero.
+             </param>
+            
+             <param name="fWidthOut">
+             Where the converted width gets stored.
+             </param>
+            
+             <param name="fHeightOut">
+             Where the converted height gets stored.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposePen(System.Drawing.Pen@)">
+             <summary>
+             Disposes of a pen.
+             </summary>
+            
+             <param name="oPen">
+             Pen to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oPen" /> isn't null, this method calls the Dispose
+             method on <paramref name="oPen" />, then sets it to null.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposeSolidBrush(System.Drawing.SolidBrush@)">
+             <summary>
+             Disposes of a solid brush.
+             </summary>
+            
+             <param name="oSolidBrush">
+             SolidBrush to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oSolidBrush" /> isn't null, this method calls the
+             Dispose method on <paramref name="oSolidBrush" />, then sets it to
+             null.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposeBrush(System.Drawing.Brush@)">
+             <summary>
+             Disposes of a brush.
+             </summary>
+            
+             <param name="oBrush">
+             Brush to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oBrush" /> isn't null, this method calls the Dispose
+             method on <paramref name="oBrush" />, then sets it to null.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposeGraphics(System.Drawing.Graphics@)">
+             <summary>
+             Disposes of a Graphics object.
+             </summary>
+            
+             <param name="oGraphics">
+             Graphics object to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oGraphics" /> isn't null, this method calls the
+             Dispose method on <paramref name="oGraphics" />, then sets it to null.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposeGraphicsPath(System.Drawing.Drawing2D.GraphicsPath@)">
+             <summary>
+             Disposes of a GraphicsPath object.
+             </summary>
+            
+             <param name="oGraphicsPath">
+             GraphicsPath object to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oGraphicsPath" /> isn't null, this method calls the
+             Dispose method on <paramref name="oGraphicsPath" />, then sets it to
+             null.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.GraphicsUtil.DisposeBitmap(System.Drawing.Bitmap@)">
+             <summary>
+             Disposes of a Bitmap object.
+             </summary>
+            
+             <param name="oBitmap">
+             Bitmap object to dispose.  Can be null.  Gets set to null.
+             </param>
+            
+             <remarks>
+             If <paramref name="oBitmap" /> isn't null, this method calls the
+             Dispose method on <paramref name="oBitmap" />, then sets it to null.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil">
+             <summary>
+             Utility methods for working with colors.
+             </summary>
+            
+             <remarks>
+             This class adds functionality to the System.Drawing.Color class.  A better
+             design would have a new ColorPlus class inherit from Color, with new
+             methods added to ColorPlus, but because the Color class is sealed, that
+             isn't possible.
+            
+             <para>
+             All methods are static.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.Saturation">
+            Saturation to use for all colors.  Saturation ranges from 0 to 240,
+            where 0 is grayscale and 240 is the most saturated.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.MaximumLuminance">
+            Maximum luminance to use.  Don't get too close to white, which would
+            prevent bright colors from being distinguishable from one another.
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.GetUniqueColor(System.Int32,System.Int32)">
+             <summary>
+             Gets one of a series of unique colors.
+             </summary>
+            
+             <param name="index">
+             The index of the unique color within the series.  Must be greater than
+             or equal to zero.
+             </param>
+            
+             <param name="totalUniqueColors">
+             The total number of unique color within the series.  Must be greater
+             than zero.
+             </param>
+            
+             <returns>
+             One unique color in a series.
+             </returns>
+            
+             <remarks>
+             This method is meant to be called <paramref name="totalUniqueColors"/>
+             times to obtain a series of unique colors.
+            
+             <para>
+             This method cycles through a fixed set of colors, then repeats the set
+             as many times as necessary with increasing luminance components.
+             </para>
+            
+             <para>
+             The number of colors in the fixed set is <see cref="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.UniqueColorHues"/>.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.ColorHLSToRGB(System.Int32,System.Int32,System.Int32)">
+             <summary>
+             Windows API, converts an HLS color to the RGB color space.
+             </summary>
+            
+             <param name="wHue">
+             Hue component.  Ranges from 0 to 240.
+             </param>
+            
+             <param name="wLuminance">
+             Luminance component.  Ranges from 0 to 240, where 0 represents black
+             and 240 represents white.
+             </param>
+            
+             <param name="wSaturation">
+             Saturation component.  Ranges from 0 to 240, where 0 is grayscale and
+             240 is the most saturated.
+             </param>
+            
+             <returns>
+             RGB color.
+             </returns>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.HueLuminancePairs">
+            Hue/luminance pairs used for the first set of colors returned by
+            GetUniqueColors().  The saturation component for each color is 240.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.UniqueColorHues">
+            <summary>
+            Number of unique hues used by <see cref="M:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.GetUniqueColor(System.Int32,System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.HueAndLuminance">
+            Hue/luminance pairs.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.HueAndLuminance.Hue">
+            Hue ranges from 0 to 240.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.GraphicsLib.ColorUtil.HueAndLuminance.Luminance">
+            Luminance ranges from 0 (black) to 240 (white).
+        </member>
+    </members>
+</doc>

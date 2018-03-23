@@ -1,0 +1,2789 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.NodeXL.Adapters</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.NodeXL.Adapters.GraphMLAttribute">
+             <summary>
+             Represents a GraphML vertex or edge attribute.
+             </summary>
+            
+             <remarks>
+             In GraphML, a "key" XML node defines an edge or vertex attribute, which
+             GraphML calls a "Graph-ML attribute," and a "data" XML node specifies the
+             GraphML-attribute's value for a specific vertex or edge.  The <see cref="T:Microsoft.NodeXL.Adapters.GraphMLAttribute"/> constructor parses the "key" XML node, and the
+             <see cref="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.GetAttributeValue(System.Xml.XmlNode)"/> parses a "data" XML node.  <see cref="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.TryGetDefaultAttributeValue(System.Object@)"/> provides a default value for the
+             GraphML-attribute, if one was specified.
+            
+             <para>
+             NodeXL doesn't support the for="graph" or for="all" attribute values
+             allowed by the GraphML specification.  The caller should filter out such
+             "key" XML nodes before using this class to parse them.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.#ctor(System.Xml.XmlNode,System.Xml.XmlNamespaceManager,System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.GraphMLAttribute"/>
+             class.
+             </summary>
+            
+             <param name="keyXmlNode">
+             A "key" XML node representing a Graph-ML attribute.
+             </param>
+            
+             <param name="xmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <param name="graphMLPrefix">
+             The prefix specified for the GraphML namespace when <paramref name="xmlNamespaceManager"/> was created.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.GetAttributeValue(System.Xml.XmlNode)">
+             <summary>
+             Gets a GraphML-attribute value for a vertex or edge by parsing a "data"
+             XML node.
+             </summary>
+            
+             <param name="dataXmlNode">
+             A "data" XML node for a vertex or edge.
+             </param>
+            
+             <returns>
+             The attribute's value.
+             </returns>
+            
+             <remarks>
+             The value of the key attribute of the <paramref name="dataXmlNode"/>
+             XML node must be the value of the <see cref="P:Microsoft.NodeXL.Adapters.GraphMLAttribute.ID"/> property.  In other
+             words, call this method only on the <see cref="T:Microsoft.NodeXL.Adapters.GraphMLAttribute"/>
+             object that corresponds to the key value.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.TryGetDefaultAttributeValue(System.Object@)">
+             <summary>
+             Attempts to get the default value for this GraphML-attribute.
+             </summary>
+            
+             <param name="defaultAttributeValue">
+             Where the default value gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if this GraphML-attribute has a default value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.ParseKeyXmlNode(System.Xml.XmlNode,System.Xml.XmlNamespaceManager,System.String)">
+             <summary>
+             Parses the "key" XML node representing a Graph-ML attribute.
+             class.
+             </summary>
+            
+             <param name="oKeyXmlNode">
+             A "key" XML node.
+             </param>
+            
+             <param name="oXmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <param name="sGraphMLPrefix">
+             The prefix specified for the GraphML namespace when <paramref
+             name="oXmlNamespaceManager" /> was created.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.ConvertAttributeValue(System.String)">
+             <summary>
+             Converts an attribute value from a string to the attribute's type.
+             </summary>
+            
+             <param name="sAttributeValue">
+             The value to convert.  Can't be null.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLAttribute.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.m_sID">
+            Value of the key node's ID attribute.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.m_sName">
+            Value of the key node's attr.name attribute.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.m_bIsForVertex">
+            true if the GraphML-attribute is for a vertex, false if it is for an
+            edge.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.m_eType">
+            Value of the key node's attr.type attribute.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.m_oDefaultAttributeValue">
+            Default attribute value, or null if there is no default.
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.GraphMLAttribute.ID">
+             <summary>
+             Gets the ID of the GraphMLAttribute.
+             </summary>
+            
+             <value>
+             The ID of the GraphMLAttribute, as a String.
+             </value>
+            
+             <remarks>
+             The ID is the value of the "id" attribute on the "key" XML node.
+             </remarks>
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.GraphMLAttribute.Name">
+             <summary>
+             Gets the name of the GraphMLAttribute.
+             </summary>
+            
+             <value>
+             The name of the GraphMLAttribute, as a String.
+             </value>
+            
+             <remarks>
+             The name is the value of the "attr.name" attribute on the "key" XML
+             node, or the value of the "id" attribute if the "attr.name" attribute
+             is missing.
+             </remarks>
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.GraphMLAttribute.IsForVertex">
+             <summary>
+             Gets a flag indicating whether the GraphML-attribute is for a vertex or
+             for an edge.
+             </summary>
+            
+             <value>
+             true if the GraphML-attribute is for a vertex, false if it is for an
+             edge.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType">
+             <summary>
+             Specifies the type of a GraphML-attribute.
+             </summary>
+            
+             <remarks>
+             The enum names are the possible values of the attr.type attribute on
+             a key node.
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.Boolean">
+            <summary>
+            Boolean.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.Int">
+            <summary>
+            Int32.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.Long">
+            <summary>
+            Int64.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.Float">
+            <summary>
+            Single.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.Double">
+            <summary>
+            Double.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLAttribute.AttributeType.String">
+            <summary>
+            String.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter">
+             <summary>
+             Converts a graph to and from a subset of the Pajek format.
+             </summary>
+            
+             <remarks>
+             This class supports only a subset of the Pajek format, which is roughly
+             described in the Pajek Reference Manual at
+             http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf.
+            
+             <para>
+             This is the supported subset:
+             </para>
+            
+             <code>
+             *vertices N
+             1 "vertex 1 name" [x y z]
+             2 "vertex 2 name" [x y z]
+             ...
+             N "vertex N name" [x y z]
+            
+             *edges
+             Vi Vj weight
+             Vm Vn weight
+             ...
+            
+             *edgeslist
+             Vi Vj Vk ...
+             Vm Vn ...
+             ...
+            
+             *arcs
+             Vi Vj weight
+             Vm Vn weight
+             ...
+            
+             *arcslist
+             Vi Vj Vk ...
+             Vm Vn ...
+             ...
+             </code>
+            
+             <para>
+             The delimiter is any combination of spaces and tabs.
+             </para>
+            
+             <para>
+             All sections are optional.  If there is at least one section, there must be
+             one and only one *vertices section and it must be the first section.  If
+             edges are specified with *edges and *edgeslist sections only, the graph
+             is considered undirected.  If edges are specified with *arcs and *arcslist
+             sections only, the graph is considered directed.  If there are both
+             undirected and directed edges, the graph is considered mixed.
+             </para>
+            
+             <para>
+             Empty lines are ignored.  Lines starting with slash-asterisk are considered
+             comments and are skipped.
+             </para>
+            
+             <para>
+             Everything is case-insensitive except the vertex names.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.GraphAdapterBase">
+             <summary>
+             Base class for graph adapters.
+             </summary>
+            
+             <remarks>
+             This abstract class can serve as a base class for <see cref="T:Microsoft.NodeXL.Adapters.IGraphAdapter"/> implementations.  Its implementations of the <see cref="T:Microsoft.NodeXL.Adapters.IGraphAdapter"/> public methods provide error checking but defer the
+             actual work to protected abstract methods.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.AdapterBase">
+            <summary>
+            Base class for most classes in the <see cref="N:Microsoft.NodeXL.Adapters"/>
+            namespace.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.AdapterBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.AdapterBase"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.AdapterBase.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.AdapterBase.ArgumentChecker">
+             <summary>
+             Gets a new initialized <see cref="P:Microsoft.NodeXL.Adapters.AdapterBase.ArgumentChecker"/> object.
+             </summary>
+            
+             <value>
+             A new initialized <see cref="P:Microsoft.NodeXL.Adapters.AdapterBase.ArgumentChecker"/> object.
+             </value>
+            
+             <remarks>
+             The returned object can be used to check the validity of property
+             values and method parameters.
+            
+             <para>
+             The <see cref="T:Microsoft.NodeXL.Core.NodeXLBase"/> implementation of this property cannot be
+             used because it's marked as internal.  The reason it's internal is
+             explained in the comments for the <see cref="P:Microsoft.NodeXL.Adapters.AdapterBase.ArgumentChecker"/> class.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.IGraphAdapter">
+             <summary>
+             Supports conversion of a graph to and from a specific data format.
+             </summary>
+            
+             <remarks>
+             The NodeXL core components do not know anything about the various formats
+             commonly used to store graph data.  Instead, data conversion is
+             accomplished with a family of classes that implement the <see cref="T:Microsoft.NodeXL.Adapters.IGraphAdapter"/> interface.  Each such class knows how to load a
+             graph with data that is in a particular format, and to save a graph to that
+             format.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.LoadGraphFromFile(System.String)">
+             <summary>
+             Creates a graph and loads it with graph data read from a file.
+             </summary>
+            
+             <param name="filename">
+             Full path to the file containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref
+             name="filename" />.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="filename" />.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.LoadGraphFromStream(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.LoadGraphFromString(System.String)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.String"/>.
+             </summary>
+            
+             <param name="theString">
+             <see cref="T:System.String"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="theString"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="theString"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.String)">
+             <overloads>
+             Saves graph data.
+             </overloads>
+            
+             <summary>
+             Saves graph data to a file.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="filename">
+             Full path to the file to save to.  If the file exists, it gets
+             overwritten.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph"/> to <paramref name="filename"/>.
+            
+             <para>
+             If the <see cref="P:Microsoft.NodeXL.Core.IGraph.Directedness"/> property on <paramref name="graph"/> is set to a value that is incompatible with the graph
+             adapter, an exception is thrown.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph"/> to <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             If the <see cref="P:Microsoft.NodeXL.Core.IGraph.Directedness"/> property on <paramref name="graph"/> is set to a value that is incompatible with the graph
+             adapter, an exception is thrown.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.IGraphAdapter.SupportsDirectedness(Microsoft.NodeXL.Core.GraphDirectedness)">
+             <summary>
+             Returns a flag indicating whether the graph adapter can be used with
+             graphs of a specified <see cref="T:Microsoft.NodeXL.Core.GraphDirectedness"/>.
+             </summary>
+            
+             <param name="directedness">
+             A <see cref="T:Microsoft.NodeXL.Core.GraphDirectedness"/> value.
+             </param>
+            
+             <returns>
+             true if the graph adapter can be used with graphs of the specified
+             directedness.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.GraphAdapterBase"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphFromFile(System.String)">
+             <summary>
+             Creates a graph and loads it with graph data read from a file.
+             </summary>
+            
+             <param name="filename">
+             Full path to the file containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref
+             name="filename" />.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="filename" />.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphFromString(System.String)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.String"/>.
+             </summary>
+            
+             <param name="theString">
+             <see cref="T:System.String"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="theString"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="theString"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphFromStream(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph and loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.String)">
+             <overloads>
+             Saves graph data.
+             </overloads>
+            
+             <summary>
+             Saves graph data to a file.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="filename">
+             Full path to the file to save to.  If the file exists, it gets
+             overwritten.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph"/> to <paramref name="filename"/>.
+            
+             <para>
+             If the <see cref="P:Microsoft.NodeXL.Core.IGraph.Directedness"/> property on <paramref name="graph"/> is set to a value that is incompatible with the graph
+             adapter, an exception is thrown.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph"/> to <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             If the <see cref="P:Microsoft.NodeXL.Core.IGraph.Directedness"/> property on <paramref name="graph"/> is set to a value that is incompatible with the graph
+             adapter, an exception is thrown.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SupportsDirectedness(Microsoft.NodeXL.Core.GraphDirectedness)">
+             <summary>
+             Returns a flag indicating whether the graph adapter can be used with
+             graphs of a specified <see cref="T:Microsoft.NodeXL.Core.GraphDirectedness"/>.
+             </summary>
+            
+             <param name="directedness">
+             A <see cref="T:Microsoft.NodeXL.Core.GraphDirectedness"/> value.
+             </param>
+            
+             <returns>
+             true if the graph adapter can be used with graphs of the specified
+             directedness.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.GetSupportedDirectedness(System.Boolean@,System.Boolean@,System.Boolean@)">
+             <summary>
+             Gets a set of flags indicating the directedness of the graphs that the
+             implementation can load and save.
+             </summary>
+            
+             <param name="supportsDirected">
+             Gets set to true if the implementation can load and save directed
+             graphs.
+             </param>
+            
+             <param name="supportsUndirected">
+             Gets set to true if the implementation can load and save undirected
+             graphs.
+             </param>
+            
+             <param name="supportsMixed">
+             Gets set to true if the implementation can load and save mixed graphs.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphCore(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph, loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a stream.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             Stream to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph" /> to <paramref
+             name="stream" />.  It does not close <paramref name="stream" />.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.CheckGraphDirectedness(Microsoft.NodeXL.Core.IGraph,System.Boolean)">
+             <summary>
+             Checks whether the directedness of a graph is supported by the
+             implementation.
+             </summary>
+            
+             <param name="graph">
+             Graph to check.
+             </param>
+            
+             <param name="loading">
+             true if this method is being called while a graph is being loaded,
+             false if it is being called while a graph is being saved.
+             </param>
+            
+             <remarks>
+             An exception is thrown if the directedness of <paramref name="graph" />
+             is not supported by the implementation.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.VertexCountToString(System.Int32)">
+             <summary>
+             Returns a string describing a vertex count.
+             </summary>
+            
+             <param name="vertices">
+             Number of vertices.  Must be non-negative.
+             </param>
+            
+             <returns>
+             A string describing <paramref name="vertices" />, in the format
+             "N vertices".
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.TryReadLine(System.IO.StreamReader,System.String@,System.Int32@)">
+             <summary>
+             Attempts to read a line from a StreamReader.
+             </summary>
+            
+             <param name="streamReader">
+             StreamReader to read a line from.
+             </param>
+            
+             <param name="line">
+             Where the line gets stored if true is returned.
+             </param>
+            
+             <param name="lineNumber">
+             Line number of <paramref name="line" />.
+             </param>
+            
+             <returns>
+             true if a line was read.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnLoadFormatError(System.String,System.Int32,System.String)">
+             <overloads>
+             Handles a formatting error detected by <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphCore(System.IO.Stream)"/>.
+             </overloads>
+            
+             <summary>
+             Handles a line-oriented formatting error detected by <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphCore(System.IO.Stream)"/>.
+             </summary>
+            
+             <param name="line">
+             Line that is incorrectly formatted.  Can't be null.
+             </param>
+            
+             <param name="lineNumber">
+             One-based line number of <paramref name="line"/>.
+             </param>
+            
+             <param name="expectedFormat">
+             Description of what a correctly-formatted line should look like.
+             </param>
+            
+             <remarks>
+             If the derived class reads from a line-oriented text file and detects
+             a formatting error on a line, it should handle the error by calling
+             this method or <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnLoadFormatError2(System.String,System.Int32,System.String)"/>.  A <see cref="T:System.FormatException"/> is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnLoadFormatError(System.String)">
+             <summary>
+             Handles a formatting error detected by <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphCore(System.IO.Stream)"/>
+             given a complete error message.
+             </summary>
+            
+             <param name="completeErrorMessage">
+             Full description of the formatting error.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnLoadFormatError2(System.String,System.Int32,System.String)">
+             <summary>
+             Handles a formatting error detected by <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.LoadGraphCore(System.IO.Stream)"/>.
+             </summary>
+            
+             <param name="line">
+             Line that is incorrectly formatted.  Can't be null.
+             </param>
+            
+             <param name="lineNumber">
+             One-based line number of <paramref name="line"/>.
+             </param>
+            
+             <param name="errorDetails">
+             Description of the formatting error.
+             </param>
+            
+             <remarks>
+             If the derived class reads from a line-oriented text file and detects
+             a formatting error on a line, it should handle the error by calling
+             this method or <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnLoadFormatError(System.String)"/>.  A <see cref="T:System.FormatException"/> is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.OnSaveError(System.String)">
+             <summary>
+             Handles an error detected by <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)"/>.
+             </summary>
+            
+             <param name="errorMessage">
+             Error message to include in the exception.
+             </param>
+            
+             <remarks>
+             If the derived class encounters an error when attempting to save a
+             graph, it should handle the error by calling this method.  A <see cref="T:Microsoft.NodeXL.Adapters.SaveGraphException"/> is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.DefaultEdgeWeight">
+            Default edge weight to use when an edge weight isn't specified.
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.GetSupportedDirectedness(System.Boolean@,System.Boolean@,System.Boolean@)">
+             <summary>
+             Gets a set of flags indicating the directedness of the graphs that the
+             implementation can load and save.
+             </summary>
+            
+             <param name="supportsDirected">
+             Gets set to true if the implementation can load and save directed
+             graphs.
+             </param>
+            
+             <param name="supportsUndirected">
+             Gets set to true if the implementation can load and save undirected
+             graphs.
+             </param>
+            
+             <param name="supportsMixed">
+             Gets set to true if the implementation can load and save mixed graphs.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.LoadGraphCore(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph, loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a stream.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             Stream to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph" /> to <paramref
+             name="stream" />.  It does not close <paramref name="stream" />.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.IsValidEdgeSection(System.String,System.Int32,System.String,Microsoft.NodeXL.Core.IVertex[])">
+             <summary>
+             Determines whether a line is a valid section marker for an *edges,
+             *edgeslist, *arcs, or *arcslist section.
+             </summary>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <param name="iLineNumber">
+             One-based line number of <paramref name="sLine" />.
+             </param>
+            
+             <param name="sSectionName">
+             Section name to check for.  Sample: "*edges".
+             </param>
+            
+             <param name="aoVertices">
+             Vertices created so far, or null if there are no vertices.
+             </param>
+            
+             <returns>
+             true if the line is a valid section marker.
+             </returns>
+            
+             <remarks>
+             If the line is in the wrong format, an exception is thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.ParseVertex(System.String,System.Int32,Microsoft.NodeXL.Core.IVertex[],System.Int32@)">
+             <summary>
+             Parses a vertex line.
+             </summary>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <param name="iLineNumber">
+             One-based line number of <paramref name="sLine" />.
+             </param>
+            
+             <param name="aoVertices">
+             The array length is equal to the expected number of vertices.  The
+             first <paramref name="iVerticesParsed" /> elements are set to vertices
+             that have already been parsed; the remaining elements are null.
+             </param>
+            
+             <param name="iVerticesParsed">
+             Number of parsed vertices in <paramref name="aoVertices" />.  Gets
+             incremented.
+             </param>
+            
+             <remarks>
+             This method attempts to parse <paramref name="sLine" />, which is a
+             line in the *vertices section.  If it succeeds, a new vertex is added
+             to <paramref name="aoVertices" /> and <paramref
+             name="iVerticesParsed" /> is incremented.  An exception is thrown
+             otherwise.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.ParseEdge(System.String,System.Int32,System.Int32,System.Collections.Generic.List{Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData})">
+             <summary>
+             Parses an edge line.
+             </summary>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <param name="iLineNumber">
+             One-based line number of <paramref name="sLine" />.
+             </param>
+            
+             <param name="iVertices">
+             Number of vertices in the graph.  Must be greater than 0.
+             </param>
+            
+             <param name="oEdgeData">
+             List to add the new edge data to.
+             </param>
+            
+             <remarks>
+             This method attempts to parse <paramref name="sLine" />, which is a
+             line in the *edges or *arcs section.  If it succeeds, a new
+             PajekEdgeData struct is added to <paramref name="oEdgeData" />.  An
+             exception is thrown otherwise.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.ParseEdgeList(System.String,System.Int32,System.Int32,System.Collections.Generic.List{Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData})">
+             <summary>
+             Parses an edge list line.
+             </summary>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <param name="iLineNumber">
+             One-based line number of <paramref name="sLine" />.
+             </param>
+            
+             <param name="iVertices">
+             Number of vertices in the graph.
+             </param>
+            
+             <param name="oEdgeData">
+             List to add the new edge data to.
+             </param>
+            
+             <remarks>
+             This method attempts to parse <paramref name="sLine" />, which is a
+             line in the *edgeslist or *arcslist section.  If it succeeds, a new
+             PajekEdgeData struct is added to <paramref name="oEdgeData" />.  An
+             exception is thrown otherwise.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.SplitLine(System.String)">
+             <summary>
+             Splits a line read from a file.
+             </summary>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <returns>
+             An array of string tokens.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.CheckVertexNumber(System.Int32,System.String,System.Int32,System.Int32)">
+             <summary>
+             Checks whether a vertex number is valid.
+             </summary>
+            
+             <param name="iVertexNumber">
+             Vertex number read from the file.
+             </param>
+            
+             <param name="sLine">
+             Line read from the file.
+             </param>
+            
+             <param name="iLineNumber">
+             One-based line number of <paramref name="sLine" />.
+             </param>
+            
+             <param name="iVertices">
+             Number of vertices in the graph.
+             </param>
+            
+             <remarks>
+             An exception is thrown if <paramref name="iVertexNumber" /> is invalid.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.CreateGraph(Microsoft.NodeXL.Core.IVertex[],System.Collections.Generic.List{Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData},System.Collections.Generic.List{Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData})">
+             <summary>
+             Creates a graph given collections of vertices and edges.
+             </summary>
+            
+             <param name="aoVertices">
+             Vertices to add to the graph, or null if there are no vertices.
+             </param>
+            
+             <param name="oUndirectedEdgeData">
+             List of undirected edges to add to the graph.
+             </param>
+            
+             <param name="oDirectedEdgeData">
+             List of directed edges to add to the graph.
+             </param>
+            
+             <returns>
+             A new graph.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.AddEdgeToGraph(Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData,Microsoft.NodeXL.Core.IEdgeCollection,Microsoft.NodeXL.Core.IVertex[],System.Boolean)">
+             <summary>
+             Adds an edge to a graph's edge collection.
+             </summary>
+            
+             <param name="oEdgeData">
+             Contains data for the new edge.
+             </param>
+            
+             <param name="oEdges">
+             Graph's edge collection.
+             </param>
+            
+             <param name="aoVertices">
+             Graph's vertices.  Can't be null.
+             </param>
+            
+             <param name="bDirected">
+             true if the edge is directed.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.WriteEdge(Microsoft.NodeXL.Core.IEdge,System.Collections.Generic.Dictionary{System.Int32,System.Int32},System.IO.StreamWriter)">
+             <summary>
+             Writes an edge to a file.
+             </summary>
+            
+             <param name="oEdge">
+             Edge to write.
+             </param>
+            
+             <param name="oVertexIDToNumber">
+             Dictionary that keeps track of vertices.  The keys are vertex IDs and
+             the values are the one-based vertex numbers used by the Pajek format.
+             </param>
+            
+             <param name="oStreamWriter">
+             StreamWriter to write to.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.StreamEncoding">
+             Encoding to use when loading and saving graphs.
+            
+             Note that Pajek will not read a file encoded with UTF-8.  It
+             successfully reads the list of vertices, but not the edges.  It seems
+             to be the UTF-8 BOM marker that confuses Pajek, because manually
+             removing the marker fixes the problem.
+            
+             Using ASCII instead of UTF-8 will cause problems with non-ASCII
+             characters used in vertex names, but there is no way around that, given
+             Pajek's limitations.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.m_eCurrentSection">
+            Indicates which section is currently being parsed.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.m_oVertexRegex">
+            Regex used to parse vertex lines.
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData">
+             <summary>
+             Stores information about one edge in a Pajek file.
+             </summary>
+            
+             <remarks>
+             This structure is embedded within the <see cref="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter"/>
+             class and is meant for use only within the class.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.#ctor(System.Int32,System.Int32,System.Double)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData"/> class.
+             </summary>
+            
+             <param name="firstVertexNumber">
+             Vertex number of the edge's first vertex.  The vertex number is the
+             first field of the lines within the *vertices section and ranges from
+             1 to the number of vertices.
+             </param>
+            
+             <param name="secondVertexNumber">
+             Vertex number of the edge's second vertex.
+             </param>
+            
+             <param name="weight">
+             Edge weight.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.m_iFirstVertexNumber">
+            Number of the first vertex.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.m_iSecondVertexNumber">
+            Number of the second vertex.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.m_dWeight">
+            Edge weight.
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.FirstVertexNumber">
+             <summary>
+             Gets the vertex number of the first vertex.
+             </summary>
+            
+             <value>
+             The vertex number of the edges's first vertex.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.SecondVertexNumber">
+             <summary>
+             Gets the vertex number of the second vertex.
+             </summary>
+            
+             <value>
+             The vertex number of the edges's second vertex.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Adapters.PajekGraphAdapter.PajekEdgeData.Weight">
+             <summary>
+             Gets the edge's weight.
+             </summary>
+            
+             <value>
+             The edge's weight.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections">
+            <summary>
+            Specifies a section in the file.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.Vertices">
+            <summary>
+            The *vertices section is being parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.Edges">
+            <summary>
+            The *edges section is being parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.EdgesList">
+            <summary>
+            The *edgeslist section is being parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.Arcs">
+            <summary>
+            The *arcs section is being parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.PajekGraphAdapter.Sections.ArcsList">
+            <summary>
+            The *arcslist section is being parsed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument">
+             <summary>
+             Represents an XML document containing GraphML that represents a graph.
+             </summary>
+            
+             <remarks>
+             See the "GraphML Primer" for details on the GraphML XML schema:
+            
+             <para>
+             http://graphml.graphdrawing.org/primer/graphml-primer.html
+             </para>
+            
+             <para>
+             Creating a <see cref="T:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument"/> automatically creates an XML
+             declaration, a root "graphml" XML node, and a "graph" child XML node.  Use
+             <see cref="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.DefineGraphMLAttribute(System.Boolean,System.String,System.String,System.String,System.String)"/>, <see cref="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendVertexXmlNode(System.String)"/>,
+             <see cref="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendEdgeXmlNode(System.String,System.String)"/>, and <see cref="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendGraphMLAttributeValue(System.Xml.XmlNode,System.String,System.String)"/> to populate
+             the document with vertices, edges, and vertex/edge attributes.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.GraphMLNamespaceUri">
+            GraphML namespace URI.
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.#ctor(System.Boolean)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument"/>
+             class.
+             </summary>
+            
+             <param name="directed">
+             true if the graph is directed, false if it is undirected.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.DefineGraphMLAttribute(System.Boolean,System.String,System.String,System.String,System.String)">
+             <summary>
+             Defines a GraphML-Attribute.
+             </summary>
+            
+             <param name="forEdge">
+             true if the attribute is for edges, false if it is for vertices.
+             </param>
+             
+             <param name="attributeID">
+             The attribute's ID.
+             </param>
+             
+             <param name="attributeName">
+             The attribute's name
+             </param>
+             
+             <param name="attributeType">
+             The attribute's type  Must be "boolean," "int," "long," "float,"
+             "double," or "string."
+             </param>
+             
+             <param name="defaultAttributeValue">
+             Default attribute value, or null there is no default.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendVertexXmlNode(System.String)">
+             <summary>
+             Creates a new XML node representing a vertex and appends it to the
+             "graph" XML node.
+             </summary>
+            
+             <param name="vertexID">
+             Vertex ID.
+             </param>
+            
+             <returns>
+             The new node.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendEdgeXmlNode(System.String,System.String)">
+             <summary>
+             Creates a new XML node representing an edge and appends it to the
+             "graph" XML node.
+             </summary>
+            
+             <param name="vertex1ID">
+             ID of the edge's first vertex.
+             </param>
+            
+             <param name="vertex2ID">
+             ID of the edge's second vertex.
+             </param>
+            
+             <returns>
+             The new node.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendGraphMLAttributeValue(System.Xml.XmlNode,System.String,System.String)">
+             <overloads>
+             Appends a GraphML-Attribute value to an edge or vertex XML node. 
+             </overloads>
+            
+             <summary>
+             Appends a GraphML-Attribute value of type "string" to an edge or vertex
+             XML node. 
+             </summary>
+            
+             <param name="edgeOrVertexXmlNode">
+             The edge or vertex XML node to add the attribute value to.
+             </param>
+             
+             <param name="attributeID">
+             The attribute's ID.
+             </param>
+             
+             <param name="attributeValue">
+             The attribute's value.  Can be an empty string but not null.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendGraphMLAttributeValue(System.Xml.XmlNode,System.String,System.Int32)">
+             <summary>
+             Appends a GraphML-Attribute value of type "int" to an edge or vertex
+             XML node. 
+             </summary>
+            
+             <param name="edgeOrVertexXmlNode">
+             The edge or vertex XML node to add the attribute value to.
+             </param>
+             
+             <param name="attributeID">
+             The attribute's ID.
+             </param>
+             
+             <param name="attributeValue">
+             The attribute's value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendGraphMLAttributeValue(System.Xml.XmlNode,System.String,System.Double)">
+             <summary>
+             Appends a GraphML-Attribute value of type "double" to an edge or vertex
+             XML node. 
+             </summary>
+            
+             <param name="edgeOrVertexXmlNode">
+             The edge or vertex XML node to add the attribute value to.
+             </param>
+             
+             <param name="attributeID">
+             The attribute's ID.
+             </param>
+             
+             <param name="attributeValue">
+             The attribute's value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.GetHasVertexXmlNode(System.Xml.XmlDocument)">
+             <summary>
+             Gets a flag indicating whether a document has at least one XML node
+             that represents a vertex.
+             </summary>
+            
+             <param name="graphMLXmlDocument">
+             XML document containing GraphML that represents a graph.  This does not
+             have to be a GraphMLXmlDocument.
+             </param>
+            
+             <returns>
+             true if the document has at least one XML node that represents a
+             vertex, false if there are no such XML nodes.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendXmlNode(System.Xml.XmlNode,System.String)">
+             <overloads>
+             Creates a new XML node and appends it to a parent node.
+             </overloads>
+            
+             <summary>
+             Creates a new XML node and appends it to a parent node.
+             </summary>
+            
+             <param name="oParentXmlNode">
+             Node to append the new node to.
+             </param>
+             
+             <param name="sChildName">
+             Name of the new node.
+             </param>
+            
+             <returns>
+             The new node.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AppendXmlNode(System.Xml.XmlNode,System.String,System.String)">
+             <summary>
+             Creates a new XML node, appends it to a parent node, and sets its inner
+             text.
+             </summary>
+            
+             <param name="oParentXmlNode">
+             Node to append the new node to.
+             </param>
+             
+             <param name="sChildName">
+             Name of the new node.
+             </param>
+            
+             <param name="sInnerText">
+             The new node's inner text.  Can be empty but not null.
+             </param>
+            
+             <returns>
+             The new node.
+             </returns>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.SetXmlNodeAttributes(System.Xml.XmlNode,System.String[])">
+             <summary>
+             Sets multiple attributes on an XML node.
+             </summary>
+            
+             <param name="oXmlNode">
+             Node to set attributes on.
+             </param>
+            
+             <param name="asNameValuePairs">
+             One or more pairs of strings.  The first string in each pair is an
+             attribute name and the second is the attribute value.
+             </param>
+            
+             <remarks>
+             This sets multiple attributes on an XML node in one call.  It's an
+             alternative to calling <see cref="M:System.Xml.XmlElement.SetAttribute(System.String,System.String)"/> repeatedly.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.CreateXmlNamespaceManager(System.String)">
+             <overloads>
+             Creates an XmlNamespaceManager object to use with the document.
+             </overloads>
+            
+             <summary>
+             Creates an XmlNamespaceManager object to use with this document.
+             </summary>
+            
+             <param name="prefix">
+             The prefix to use for the default GraphML namespace.
+             </param>
+            
+             <returns>
+             An XmlNamespaceManager object to use with the document.
+             </returns>
+            
+             <remarks>
+             Any prefix will do, so long as it is also included in every XPath
+             expression when the document is searched.  For example, if you want all
+             "node" XML nodes in the document, this would work:
+            
+             <code>
+             XmlNamespaceManager oXmlNamespaceManager =
+                 oGraphMLXmlDocument.CreateXmlNamespaceManager("g");
+            
+             foreach ( XmlNode oVertexXmlNode in oGraphMLXmlDocument.SelectNodes(
+                 "g:graphml/g:graph/g:node", oXmlNamespaceManager) )
+             {
+             ...
+             }
+             </code>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.CreateXmlNamespaceManager(System.Xml.XmlDocument,System.String)">
+             <summary>
+             Creates an XmlNamespaceManager object to use with a specified document.
+             </summary>
+            
+             <param name="graphMLXmlDocument">
+             XML document containing GraphML that represents a graph.  This does not
+             have to be a GraphMLXmlDocument.
+             </param>
+            
+             <param name="prefix">
+             The prefix to use for the default GraphML namespace.
+             </param>
+            
+             <returns>
+             An XmlNamespaceManager object to use with the document.
+             </returns>
+            
+             <remarks>
+             See the other overload for details on using this method.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.m_oGraphMLXmlNode">
+            Root GraphML XML node.
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.m_oGraphXmlNode">
+            Graph XML node.
+        </member>
+        <member name="P:Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument.HasVertexXmlNode">
+             <summary>
+             Gets a flag indicating whether the document has at least one XML node
+             that represents a vertex.
+             </summary>
+            
+             <value>
+             true if the document has at least one XML node that represents a
+             vertex, false if there are no such XML nodes.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.SimpleGraphAdapter">
+             <summary>
+             Converts a graph to and from a simple two-name pair format.
+             </summary>
+            
+             <remarks>
+             The two-name format consists of one line of text per edge, where each line
+             specifies the names of the vertices connected by the edge.  This is the
+             format of each line:
+            
+             <code>
+             Vertex1Name{tab}Vertex2Name
+             </code>
+            
+             <para>
+             The delimiter is a tab, and the vertex names can consist of any Unicode
+             characters, including leading, trailing, and embedded spaces.
+             </para>
+            
+             <para>
+             This adapter can be used with directed graphs only.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.ExpectedFormat">
+            Expected format of each line.
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.SimpleGraphAdapter"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.GetSupportedDirectedness(System.Boolean@,System.Boolean@,System.Boolean@)">
+             <summary>
+             Gets a set of flags indicating the directedness of the graphs that the
+             implementation can load and save.
+             </summary>
+            
+             <param name="supportsDirected">
+             Gets set to true if the implementation can load and save directed
+             graphs.
+             </param>
+            
+             <param name="supportsUndirected">
+             Gets set to true if the implementation can load and save undirected
+             graphs.
+             </param>
+            
+             <param name="supportsMixed">
+             Gets set to true if the implementation can load and save mixed graphs.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.LoadGraphCore(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph, loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a stream.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             Stream to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph" /> to <paramref
+             name="stream" />.  It does not close <paramref name="stream" />.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.VertexNameToVertex(System.String,Microsoft.NodeXL.Core.IVertexCollection,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Core.IVertex})">
+             <summary>
+             Finds or creates a vertex given a vertex name.
+             </summary>
+            
+             <param name="sVertexName">
+             Name of the vertex to find or create.
+             </param>
+            
+             <param name="oVertices">
+             Vertex collection to add a new vertex to if a new vertex is created.
+             </param>
+            
+             <param name="oDictionary">
+             Dictionary of existing vertices.  The key is the vertex name and the
+             value is the vertex.
+             </param>
+            
+             <returns>
+             The found or created vertex.
+             </returns>
+            
+             <remarks>
+             If <paramref name="oDictionary" /> contains a vertex named <paramref
+             name="sVertexName" />, the vertex is returned.  Otherwise, a vertex is
+             created, added to <paramref name="oVertices" />, added to <paramref
+             name="oDictionary" />, and returned.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.VertexToVertexName(Microsoft.NodeXL.Core.IVertex)">
+             <summary>
+             Gets a vertex's name.
+             </summary>
+            
+             <param name="oVertex">
+             Vertex to get the name for.
+             </param>
+            
+             <returns>
+             The vertex's non-null, non-empty name.
+             </returns>
+            
+             <remarks>
+             An exception is thrown if <paramref name="oVertex" /> has a null or
+             empty name.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.VertexNameIsValid(System.String)">
+             <summary>
+             Determines whether a vertex name is valid.
+             </summary>
+            
+             <param name="sVertexName">
+             Vertex name to check.
+             </param>
+            
+             <returns>
+             true if <paramref name="sVertexName" /> is valid.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.SimpleGraphAdapter.StreamEncoding">
+            Encoding to use when loading and saving graphs.
+        </member>
+        <member name="T:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker">
+             <summary>
+             Contains methods that check method arguments and property values.
+             </summary>
+            
+             <remarks>
+             This can be used by a class that wants to check values passed to its
+             property setters and arguments passed to its methods.  The CheckXXX()
+             methods in this class throw an exception if a parameter value or method
+             argument is invalid.
+            
+             <para>
+             This class is marked internal to avoid compiler error CS0433 ("The
+             type ... exists in both ...") when an executable references two or more
+             assemblies that use this class.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.#ctor(System.String)">
+             <summary>
+             Initializes a new instance of the ArgumentChecker class.
+             </summary>
+            
+             <param name="sOwnerClassName">
+             Class name of the object that created this object.  The class name gets
+             prepended to all exception messages.  Sample: "MyClass".
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyNotNull(System.String,System.Object)">
+             <summary>
+             Throws an exception if a property value is null.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="oPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyNotEmpty(System.String,System.String)">
+             <summary>
+             Throws an exception if a string property value is null or has a length
+             of zero.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the string property.
+             </param>
+            
+             <param name="sPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyPositive(System.String,System.Double)">
+             <summary>
+             Throws an exception if a Double property value is not positive.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="dPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyPositive(System.String,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 property value is not positive.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="iPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyPositive(System.String,System.Decimal)">
+             <summary>
+             Throws an exception if a Decimal property value is not positive.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="decPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyNotNegative(System.String,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 property value is negative.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="iPropertyValue">
+             Property value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyNotEqual(System.String,System.String,System.String)">
+             <summary>
+             Throws an exception if a string property is equal to a specified
+             invalid value.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="sPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="sInvalidValue">
+             Invalid value for <paramref name="sPropertyValue" />.  Can't be null.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyNotEqual(System.String,System.Int32,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 property is equal to a specified
+             invalid value.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="iPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="iInvalidValue">
+             Invalid value for <paramref name="iPropertyValue" />.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyInRange(System.String,System.Int32,System.Int32,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 property value is not within a
+             specified range.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="iPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="iMinimumValidValue">
+             Minimum allowed value.
+             </param>
+            
+             <param name="iMaximumValidValue">
+             Maximum allowed value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyInRange(System.String,System.Single,System.Single,System.Single)">
+             <summary>
+             Throws an exception if a Single property value is not within a
+             specified range.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="fPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="fMinimumValidValue">
+             Minimum allowed value.
+             </param>
+            
+             <param name="fMaximumValidValue">
+             Maximum allowed value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyInRange(System.String,System.Double,System.Double,System.Double)">
+             <summary>
+             Throws an exception if a Double property value is not within a
+             specified range.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="dPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="dMinimumValidValue">
+             Minimum allowed value.
+             </param>
+            
+             <param name="dMaximumValidValue">
+             Maximum allowed value.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckPropertyIsDefined(System.String,System.Object,System.Type)">
+             <summary>
+             Throws an exception if a property value is not defined within a
+             specified enumeration.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property.
+             </param>
+            
+             <param name="oPropertyValue">
+             Property value to check.
+             </param>
+            
+             <param name="oEnumType">
+             Type of the enumeration that <paramref name="oPropertyValue" /> is
+             supposed to be defined within.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentNotNull(System.String,System.String,System.Object)">
+             <summary>
+             Throws an exception if a method argument is null.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="oArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentNotEmpty(System.String,System.String,System.String)">
+             <summary>
+             Throws an exception if a string method argument is null or has a length
+             of zero.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="sArgumentValue">
+             Argument value to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentPositive(System.String,System.String,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 method argument is not positive.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="iArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentPositive(System.String,System.String,System.Int64)">
+             <summary>
+             Throws an exception if an Int64 method argument is not positive.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="lArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentPositive(System.String,System.String,System.Double)">
+             <summary>
+             Throws an exception if a Double method argument is not positive.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="dArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentNotNegative(System.String,System.String,System.Int32)">
+             <summary>
+             Throws an exception if an Int32 method argument is negative.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="iArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentNotNegative(System.String,System.String,System.Int64)">
+             <summary>
+             Throws an exception if an Int64 method argument is negative.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="lArgumentValue">
+             Argument to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.CheckArgumentIsDefined(System.String,System.String,System.Object,System.Type)">
+             <summary>
+             Throws an exception if a method argument is not defined within a
+             specified enumeration.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the argument to check.
+             </param>
+            
+             <param name="oArgumentValue">
+             Argument value to check.
+             </param>
+            
+             <param name="oEnumType">
+             Type of the enumeration that <paramref name="oArgumentValue" /> is
+             supposed to be defined within.
+             </param>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.ThrowPropertyException(System.String,System.String,System.Exception)">
+             <overloads>
+             Throws a new <see cref="T:System.ApplicationException"/> when the value passed
+             to a property setter is invalid.
+             </overloads>
+            
+             <summary>
+             Throws a new <see cref="T:System.ApplicationException"/> when the value passed
+             to a property setter is invalid and there is an inner exception.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property calling this method.
+             </param>
+            
+             <param name="sMessageDetails">
+             Exception message details.  Gets appended to the class and property
+             names.  See the example below.
+             </param>
+            
+             <param name="oInnerException">
+             Inner exception, or null if there is none.
+             </param>
+            
+             <remarks>
+             Call this method when the value passed to a property setter is invalid.
+             It throws an exception whose message automatically includes the class
+             and property names.
+             </remarks>
+            
+             <example>
+             If the class name that was passed to the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker"/>
+             constructor is "MyClass", <paramref name="sPropertyName"/> is
+             "MyProperty", and <paramref name="sMessageDetails"/> is "The value
+             can't be null.", then the new exception's message is
+             "MyClass.MyProperty: The value can't be null."
+             </example>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.ThrowPropertyException(System.String,System.String)">
+             <summary>
+             Throws a new <see cref="T:System.ApplicationException"/> when the value passed
+             to a property setter is invalid and there is no inner exception.
+             </summary>
+            
+             <param name="sPropertyName">
+             Name of the property calling this method.
+             </param>
+            
+             <param name="sMessageDetails">
+             Exception message details.  Gets appended to the class and property
+             names.  See the example below.
+             </param>
+            
+             <remarks>
+             Call this method when the value passed to a property setter is invalid.
+             It throws an exception whose message automatically includes the class
+             and property names.
+             </remarks>
+            
+             <example>
+             If the class name that was passed to the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker"/>
+             constructor is "MyClass", <paramref name="sPropertyName"/> is
+             "MyProperty", and <paramref name="sMessageDetails"/> is "The value
+             can't be null.", then the new exception's message is
+             "MyClass.MyProperty: The value can't be null."
+             </example>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.ThrowArgumentException(System.String,System.String,System.String,System.Exception)">
+             <overloads>
+             Throws a new <see cref="T:System.ArgumentException"/> when a method argument is
+             invalid.
+             </overloads>
+            
+             <summary>
+             Throws a new <see cref="T:System.ArgumentException"/> when a method argument is
+             invalid and there is an inner exception.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the invalid argument.
+             </param>
+            
+             <param name="sMessageDetails">
+             Exception message details.  Gets appended to the class and method
+             names.  See the example below.
+             </param>
+            
+             <param name="oInnerException">
+             Inner exception, or null if there is none.
+             </param>
+            
+             <remarks>
+             Call this method when a method argument is invalid.  It throws an
+             exception whose message automatically includes the class and method
+             names.
+             </remarks>
+            
+             <example>
+             If the class name that was passed to the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker"/>
+             constructor is "MyClass", <paramref name="sMethodName"/> is
+             "MyMethod", <paramref name="sArgumentName"/> is "TheArgument", and
+             <paramref name="sMessageDetails"/> is "TheArgument can't be empty.",
+             then the new exception's message is "MyClass.MyMethod: TheArgument
+             can't be empty."
+             </example>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.ThrowArgumentException(System.String,System.String,System.String)">
+             <summary>
+             Throws a new <see cref="T:System.ArgumentException"/> when a method argument is
+             invalid and there is no inner exception.
+             </summary>
+            
+             <param name="sMethodName">
+             Name of the method calling this method.
+             </param>
+            
+             <param name="sArgumentName">
+             Name of the invalid argument.
+             </param>
+            
+             <param name="sMessageDetails">
+             Exception message details.  Gets appended to the class and method
+             names.  See the example below.
+             </param>
+            
+             <remarks>
+             Call this method when a method argument is invalid.  It throws an
+             exception whose message automatically includes the class and method
+             names.
+             </remarks>
+            
+             <example>
+             If the class name that was passed to the <see cref="T:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker"/>
+             constructor is "MyClass", <paramref name="sMethodName"/> is
+             "MyMethod", <paramref name="sArgumentName"/> is "TheArgument", and
+             <paramref name="sMessageDetails"/> is "TheArgument can't be empty.",
+             then the new exception's message is "MyClass.MyMethod: TheArgument
+             can't be empty."
+             </example>
+        </member>
+        <member name="M:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Research.CommunityTechnologies.AppLib.ArgumentChecker.m_sOwnerClassName">
+            Class name of the object that created this object.
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.UcinetGraphAdapter">
+             <summary>
+             Converts a graph to and from a UCINET full matrix DL file.
+             </summary>
+            
+             <remarks>
+             Use the <see cref="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.LoadGraph(System.String,Microsoft.NodeXL.Core.GraphDirectedness)"/> overload
+             instead of one of the base-class overloads so that the directedness of the
+             UCINET file being loaded can be specified.
+            
+             <para>
+             Before calling <see cref="M:Microsoft.NodeXL.Adapters.GraphAdapterBase.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.String)"/>,
+             duplicate edges must be merged and the results stored in the <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.EdgeWeight"/> value on each vertex.
+             </para>
+            
+             <para>
+             The only file format supported is the UCINET full matrix DL file, as
+             exported by UCINET version 6.223.  The file looks like this:
+             </para>
+            
+             <code>
+             DL
+             N=11
+             FORMAT = FULLMATRIX DIAGONAL PRESENT
+             ROW LABELS:
+             "a"
+             "b"
+             "c"
+             "d"
+             "e"
+             "f"
+             "g"
+             "h"
+             "i"
+             "j"
+             "k"
+             COLUMN LABELS:
+             "a"
+             "b"
+             "c"
+             "d"
+             "e"
+             "f"
+             "g"
+             "h"
+             "i"
+             "j"
+             "k"
+             DATA:
+             0 0 1 0 0 0 0 0 0 0 0
+             0 0 1 0 0 0 0 0 0 0 0
+             1 1 0 1 1 0 0 0 0 0 0
+             0 0 1 0 1 1 0 0 0 0 0
+             0 0 1 1 0 0 1 0 0 0 0
+             0 0 0 1 0 0 1 1 0 0 0
+             0 0 0 0 1 1 0 1 0 0 0
+             0 0 0 0 0 1 1 0 1 0 0
+             0 0 0 0 0 0 0 1 0 1 1
+             0 0 0 0 0 0 0 0 1 0 0
+             0 0 0 0 0 0 0 0 1 0 0
+             </code>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.UcinetGraphAdapter"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.LoadGraph(System.String,Microsoft.NodeXL.Core.GraphDirectedness)">
+             <summary>
+             Creates a graph of type <see cref="T:Microsoft.NodeXL.Core.Graph"/> and specified
+             directedness, and loads it with graph data read from a file.
+             </summary>
+            
+             <param name="filename">
+             Full path to the file containing graph data.
+             </param>
+            
+             <param name="fileDirectedness">
+             The directedness of the file's graph data.
+             </param>
+            
+             <returns>
+             A new <see cref="T:Microsoft.NodeXL.Core.Graph"/> loaded with graph data read from <paramref name="filename"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a <see cref="T:Microsoft.NodeXL.Core.Graph"/> and loads it with the graph
+             data read from <paramref name="filename"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.GetSupportedDirectedness(System.Boolean@,System.Boolean@,System.Boolean@)">
+             <summary>
+             Gets a set of flags indicating the directedness of the graphs that the
+             implementation can load and save.
+             </summary>
+            
+             <param name="supportsDirected">
+             Gets set to true if the implementation can load and save directed
+             graphs.
+             </param>
+            
+             <param name="supportsUndirected">
+             Gets set to true if the implementation can load and save undirected
+             graphs.
+             </param>
+            
+             <param name="supportsMixed">
+             Gets set to true if the implementation can load and save mixed graphs.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.LoadGraphCore(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph, loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a stream.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             Stream to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph" /> to <paramref
+             name="stream" />.  It does not close <paramref name="stream" />.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.AddLoadedVertex(System.String,Microsoft.NodeXL.Core.IVertexCollection,System.Collections.Generic.Dictionary{System.Int32,Microsoft.NodeXL.Core.IVertex})">
+             <summary>
+             Adds a vertex to the graph being loaded.
+             </summary>
+            
+             <param name="sVertexName">
+             Name of the vertex to add.
+             </param>
+            
+             <param name="oVertices">
+             The graph's collection of vertices.
+             </param>
+            
+             <param name="oVertexDictionary">
+             The key is the zero-based vertex order as listed in the file, and the
+             value is the corresponding IVertex.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.LoadGraphEdges(Microsoft.NodeXL.Core.IGraph,System.IO.StreamReader,System.Collections.Generic.Dictionary{System.Int32,Microsoft.NodeXL.Core.IVertex},System.Int32@)">
+             <summary>
+             Loads a graph's edges.
+             </summary>
+            
+             <param name="oGraph">
+             The graph being loaded from a file.
+             </param>
+            
+             <param name="oStreamReader">
+             The StreamReader being used to read the file.
+             </param>
+            
+             <param name="oVertexDictionary">
+             The key is the zero-based vertex order as listed in the file, and the
+             value is the corresponding IVertex.
+             </param>
+            
+             <param name="iLineNumber">
+             Line number of the current line.  Gets updated.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.StreamEncoding">
+             Encoding to use when loading and saving graphs.
+            
+             UCINET seems to support ASCII only, so use that.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.UcinetGraphAdapter.m_eLoadedGraphDirectedness">
+            Directedness of loaded graphs.
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter">
+             <summary>
+             Converts a graph to and from a GraphML file.
+             </summary>
+            
+             <remarks>
+             A good introduction to GraphML can be found in the GraphML Primer:
+            
+             <para>
+             http://graphml.graphdrawing.org/primer/graphml-primer.html
+             </para>
+            
+             <para>
+             Here is a sample GraphML file that can be converted.  It represents a graph
+             with three vertices and two edges.
+             </para>
+            
+             <code>
+             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+             &lt;graphml xmlns="http://graphml.graphdrawing.org/xmlns"&gt;
+                 &lt;key id="EdgeWidth" for="edge" attr.name="Width"
+                     attr.type="double"&gt;
+                     &lt;default&gt;1.5&lt;/default&gt;
+                 &lt;/key&gt;
+                 &lt;key id="VertexColor" for="node" attr.name="Color"
+                     attr.type="string" /&gt;
+                 &lt;key id="LatestPostDate" for="node" attr.name="Latest Post Date"
+                     attr.type="string" /&gt;
+                         &lt;graph edgedefault="undirected"&gt;
+                     &lt;node id="V1"&gt;
+                         &lt;data key="VertexColor"&gt;red&lt;/data&gt;
+                     &lt;/node&gt;
+                     &lt;node id="V2"&gt;
+                         &lt;data key="VertexColor"&gt;orange&lt;/data&gt;
+                     &lt;/node&gt;
+                     &lt;node id="V3"&gt;
+                         &lt;data key="VertexColor"&gt;blue&lt;/data&gt;
+                     &lt;/node&gt;
+                     &lt;edge source="V1" target="V2"&gt;
+                         &lt;data key="LatestPostDate"&gt;2009/07/05&lt;/data&gt;
+                     &lt;/edge&gt;
+                     &lt;edge source="V3" target="V2"&gt;
+                         &lt;data key="EdgeWidth"&gt;2.5&lt;/data&gt;
+                         &lt;data key="LatestPostDate"&gt;2009/07/12&lt;/data&gt;
+                     &lt;/edge&gt;
+                 &lt;/graph&gt;
+             &lt;/graphml&gt;
+             </code>
+            
+             <para>
+             Edge and vertex attributes, which GraphML calls "GraphML-attributes," are
+             supported by this class.  When loading a graph, if an edge or vertex has a
+             GraphML-attribute, it gets added to the metadata of the <see cref="T:Microsoft.NodeXL.Core.IEdge"/> or <see cref="T:Microsoft.NodeXL.Core.IVertex"/>.  The metadata key is the
+             GraphML-attribute's attr.name value and the metadata value is the
+             GraphML-attribute's value.  When saving a graph, every metadata value on
+             every edge and vertex gets converted to a GraphML-attribute in the saved
+             GraphML.
+             </para>
+            
+             <para>
+             To make it possible for the caller to determine which metadata keys were
+             added to the graph's edges and vertices, the LoadXX methods add <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllEdgeMetadataKeys"/> and <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllVertexMetadataKeys"/> keys to the returned
+             graph.  The key values are of type String[].
+             </para>
+            
+             <para>
+             When saving a graph, the <see cref="M:Microsoft.NodeXL.Adapters.IGraphAdapter.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)"/> caller must add <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllEdgeMetadataKeys"/> and <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllVertexMetadataKeys"/> keys to the graph
+             before calling <see cref="M:Microsoft.NodeXL.Adapters.IGraphAdapter.SaveGraph(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)"/>.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.GraphMLUri">
+            GraphML namespace.
+        </member>
+        <member name="F:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.GraphMLPrefix">
+            GraphML prefix.  Any prefix will do, so long as it is also included in
+            every XPath expression.
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.GetSupportedDirectedness(System.Boolean@,System.Boolean@,System.Boolean@)">
+             <summary>
+             Gets a set of flags indicating the directedness of the graphs that the
+             implementation can load and save.
+             </summary>
+            
+             <param name="supportsDirected">
+             Gets set to true if the implementation can load and save directed
+             graphs.
+             </param>
+            
+             <param name="supportsUndirected">
+             Gets set to true if the implementation can load and save undirected
+             graphs.
+             </param>
+            
+             <param name="supportsMixed">
+             Gets set to true if the implementation can load and save mixed graphs.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.LoadGraphCore(System.IO.Stream)">
+             <summary>
+             Creates a graph and loads it with graph data read from a <see cref="T:System.IO.Stream"/>.
+             </summary>
+            
+             <param name="stream">
+             <see cref="T:System.IO.Stream"/> containing graph data.
+             </param>
+            
+             <returns>
+             A new graph loaded with graph data read from <paramref name="stream"/>.
+             </returns>
+            
+             <remarks>
+             This method creates a graph, loads it with the graph data read from
+             <paramref name="stream"/>.  It does not close <paramref name="stream"/>.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.GetGraphDirectedness(System.Xml.XmlNode)">
+             <summary>
+             Gets the graph directedness from the "graph" XML node.
+             </summary>
+            
+             <param name="oGraphXmlNode">
+             "graph" XML node.
+             </param>
+            
+             <returns>
+             The graph directedness.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.ParseGraphMLAttributeDefinitions(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">
+             <summary>
+             Parses the GraphML vertex and edge attribute definitions.
+             </summary>
+            
+             <param name="oGraphMLXmlNode">
+             "graphml" XML node.
+             </param>
+            
+             <param name="oXmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <returns>
+             The key is the id attribute of a "key" XML node, and the value is the
+             corresponding GraphMLAttribute object.
+             </returns>
+            
+             <remarks>
+             For each "key" XML node, a <see cref="T:Microsoft.NodeXL.Adapters.GraphMLAttribute"/> object is
+             created and added to the returned dictionary.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.ParseVertices(Microsoft.NodeXL.Core.IGraph,System.Xml.XmlNode,System.Xml.XmlNamespaceManager,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Adapters.GraphMLAttribute})">
+             <summary>
+             Parses the vertices.
+             </summary>
+            
+             <param name="oGraph">
+             The graph being loaded.
+             </param>
+            
+             <param name="oGraphXmlNode">
+             "graph" XML node.
+             </param>
+            
+             <param name="oXmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <param name="oGraphMLAttributeDictionary">
+             The key is the id attribute of a "key" XML node, and the value is the
+             corresponding GraphMLAttribute object.
+             </param>
+            
+             <returns>
+             The key is the id attribute of the "node" XML node, and the value is
+             the corresponding IVertex.
+             </returns>
+            
+             <remarks>
+             For each "node" XML node, a vertex is created, added to <paramref
+             name="oGraph" />, and added to the returned dictionary.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.ParseEdges(Microsoft.NodeXL.Core.IGraph,System.Xml.XmlNode,System.Xml.XmlNamespaceManager,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Core.IVertex},System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Adapters.GraphMLAttribute})">
+             <summary>
+             Parses the edges.
+             </summary>
+            
+             <param name="oGraph">
+             The graph being loaded.
+             </param>
+            
+             <param name="oGraphXmlNode">
+             "graph" XML node.
+             </param>
+            
+             <param name="oXmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <param name="oVertexDictionary">
+             The key is the id attribute of the "node" XML node, and the value is
+             the corresponding IVertex.
+             </param>
+            
+             <param name="oGraphMLAttributeDictionary">
+             The key is the id attribute of a "key" XML node, and the value is the
+             corresponding GraphMLAttribute object.
+             </param>
+            
+             <remarks>
+             For each "edge" XML node, an edge is created and added to <paramref
+             name="oGraph" />.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.ParseGraphMLAttributeValues(System.Xml.XmlNode,System.Xml.XmlNamespaceManager,Microsoft.NodeXL.Core.IMetadataProvider,System.Boolean,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Adapters.GraphMLAttribute})">
+             <summary>
+             Parses the GraphML-attribute values for a "node" or "edge" XML node.
+             </summary>
+            
+             <param name="oNodeOrEdgeXmlNode">
+             "node" or "edge" XML node.
+             </param>
+            
+             <param name="oXmlNamespaceManager">
+             XML namespace manager.
+             </param>
+            
+             <param name="oEdgeOrVertex">
+             The edge or vertex created from the node.
+             </param>
+            
+             <param name="bIsVertex">
+             true if the XML node is a "node" node, false if it is an "edge" node.
+             </param>
+            
+             <param name="oGraphMLAttributeDictionary">
+             The key is the id attribute of a "key" XML node, and the value is the
+             corresponding GraphMLAttribute object.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.TryGraphMLNodeIDToVertex(System.Xml.XmlNode,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Core.IVertex},Microsoft.NodeXL.Core.IVertex@)">
+             <summary>
+             Attempts to retrieve the vertex referenced by the source or target
+             attribute of an "edge" XML node.
+             </summary>
+            
+             <param name="oEdgeXmlNode">
+             The "edge" XML node.
+             </param>
+            
+             <param name="sSourceOrTarget">
+             "source" or "target".
+             </param>
+            
+             <param name="oVertexDictionary">
+             The key is the id attribute of the "node" XML node, and the value is
+             the corresponding IVertex.
+             </param>
+            
+             <param name="oVertex">
+             Where the referenced vertex gets stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the vertex was retrieved.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.SaveGraphMLAttributeNames(Microsoft.NodeXL.Core.IGraph,System.Collections.Generic.Dictionary{System.String,Microsoft.NodeXL.Adapters.GraphMLAttribute})">
+             <summary>
+             Saves the names of the GraphML-attributes on the graph.
+             </summary>
+            
+             <param name="oGraph">
+             The graph being loaded.
+             </param>
+            
+             <param name="oGraphMLAttributeDictionary">
+             The key is the id attribute of a "key" XML node, and the value is the
+             corresponding GraphMLAttribute object.
+             </param>
+            
+             <remarks>
+             This method adds <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllVertexMetadataKeys"/> and <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.AllEdgeMetadataKeys"/> keys to the graph.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.SaveGraphCore(Microsoft.NodeXL.Core.IGraph,System.IO.Stream)">
+             <summary>
+             Saves graph data to a stream.
+             </summary>
+            
+             <param name="graph">
+             Graph to save.
+             </param>
+            
+             <param name="stream">
+             Stream to save the graph data to.
+             </param>
+            
+             <remarks>
+             This method saves <paramref name="graph" /> to <paramref
+             name="stream" />.  It does not close <paramref name="stream" />.
+            
+             <para>
+             The arguments have already been checked for validity.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.AppendGraphMLAttributeValues(Microsoft.NodeXL.Core.IMetadataProvider,Microsoft.Research.CommunityTechnologies.XmlLib.GraphMLXmlDocument,System.Xml.XmlNode,System.String[],System.String)">
+             <summary>
+             Appends Graph-ML attribute values to a vertex or edge XML node while
+             saving a graph.
+             </summary>
+            
+             <param name="oEdgeOrVertex">
+             The edge or vertex to read metadata from.
+             </param>
+            
+             <param name="oGraphMLXmlDocument">
+             The GraphML document being populated.
+             </param>
+            
+             <param name="oEdgeOrVertexXmlNode">
+             The edge or vertex XML node in the GraphML document that corresponds to
+             <paramref name="oEdgeOrVertex" />.
+             </param>
+            
+             <param name="asAttributeNames">
+             Array of all possible Graph-ML attribute names for the edge or vertex.
+             </param>
+            
+             <param name="AttributeIDPrefix">
+             The prefix to use for each Graph-ML attribute ID.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.GraphMLGraphAdapter.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Adapters.SaveGraphException">
+            <summary>
+            Represents an exception thrown when a graph adapter is unable to save a
+            graph to a file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SaveGraphException.#ctor(System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Adapters.SaveGraphException"/>
+             class.
+             </summary>
+            
+             <param name="message">
+             Error message, suitable for displaying to the user.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Adapters.SaveGraphException.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+    </members>
+</doc>
