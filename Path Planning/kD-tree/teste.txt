@@ -1,0 +1,1529 @@
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: InfInfInf  ----  Nearest distance: Inf
+Booleano: True
+Distância: 2571
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+1  ----  False
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 2571
+
+
+
+--  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+37  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+36  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+35  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+34  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+33  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+32  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+31  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+30  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+29  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+28  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+27  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+26  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+25  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+24  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+23  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+22  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+21  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+20  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+19  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+18  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+17  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+16  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+15  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+14  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+13  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+12  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+11  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+10  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+9  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+8  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+7  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+6  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+5  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+4  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+3  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
+
+2  ----  True
+Nearest: -742-449  ----  Nearest distance: 1
+Booleano: False
+Distância: 0
