@@ -1,0 +1,2298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.NodeXL.Algorithms</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.NodeXL.Algorithms.SubgraphCalculator">
+             <summary>
+             Gets a subgraph for a specified vertex.
+             </summary>
+            
+             <remarks>
+             All methods are static.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.SubgraphCalculator.GetSubgraph(Microsoft.NodeXL.Core.IVertex,System.Decimal,System.Boolean,System.Collections.Generic.Dictionary{Microsoft.NodeXL.Core.IVertex,System.Int32}@,System.Collections.Generic.HashSet{Microsoft.NodeXL.Core.IEdge}@)">
+             <summary>
+             Gets a subgraph for a specified vertex.
+             </summary>
+            
+             <param name="vertex">
+             Vertex to get a subgraph for.
+             </param>
+            
+             <param name="levels">
+             The number of levels to go out from <paramref name="vertex" />.
+             Must be a multiple of 0.5.  If 0, the subgraph includes just the
+             vertex; if 1, it includes the vertex and its adjacent vertices; if 2,
+             it includes the vertex, its adjacent vertices, and their adjacent
+             vertices; and so on.  The difference between N.5 and N.0 is that N.5
+             includes any edges connecting the outermost vertices to each other,
+             whereas N.0 does not.  1.5, for example, includes any edges that
+             connect the vertex's adjacent vertices to each other, whereas 1.0
+             includes only those edges that connect the adjacent vertices to the
+             vertex.
+             </param>
+            
+             <param name="getSubgraphEdges">
+             true to get the subgraph's vertices and edges, false to get the
+             subgraph's vertices only.
+             
+             </param>
+            
+             <param name="subgraphVertices">
+             Where a Dictionary of subgraph vertices gets stored.  The key is the
+             IVertex and the value is the vertex's level, which is the distance of
+             the subgraph vertex from <paramref name="vertex" />.
+             </param>
+            
+             <param name="subgraphEdges">
+             Where a HashSet of subgraph edges gets stored.  The key is the IEdge.
+             If <paramref name="getSubgraphEdges" /> is false, the HashSet is always
+             empty.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.SubgraphCalculator.GetSubgraphAsNewGraph(System.Collections.Generic.ICollection{Microsoft.NodeXL.Core.IVertex})">
+             <summary>
+             Creates a new graph containing copies of a specified set of vertices
+             and the edges that connect them.
+             </summary>
+            
+             <param name="verticesToInclude">
+             A collection of one or more vertices to copy into the new graph.  (The
+             vertices must all be from the same graph.)
+             </param>
+            
+             <returns>
+             A new graph that contains copies of the vertices in <paramref name="verticesToInclude"/>, along with copies of the edges that
+             connect them.
+            
+             <para>
+             The <see cref="P:Microsoft.NodeXL.Core.GraphVertexEdgeBase.Name"/> of each vertex and edge is
+             copied to the new graph, but no metadata is copied.
+             </para>
+            
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.SubgraphCalculator.AddOuterEdgesToSubgraph(System.Int32,System.Collections.Generic.Dictionary{Microsoft.NodeXL.Core.IVertex,System.Int32},System.Collections.Generic.HashSet{Microsoft.NodeXL.Core.IEdge})">
+             <summary>
+             Adds any subgraph edges connecting the outermost vertices.
+             </summary>
+            
+             <param name="iOuterLevel">
+             Level of the outermost vertices.
+             </param>
+            
+             <param name="oSubgraphVertices">
+             Dictionary of subgraph vertices.  The key is the IVertex and the value
+             is the vertex's level.
+             </param>
+            
+             <param name="oSubgraphEdges">
+             HashSet of subgraph edges.  The key is the IEdge.  This method adds any
+             outer edges to this HashSet.
+             </param>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.Community">
+            <summary>
+            Represents a community used by <see cref="T:Microsoft.NodeXL.Algorithms.ClusterCalculator"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.Community"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.InitializeDeltaQs(System.Collections.Generic.LinkedList{Microsoft.NodeXL.Algorithms.Community},System.Int32)">
+             <summary>
+             Initializes the delta Q values for this community.
+             </summary>
+            
+             <param name="communities">
+             List of all communities.
+             </param>
+            
+             <param name="edgesInGraph">
+             Number of edges in the graph.
+             </param>
+            
+             <remarks>
+             It's assumed that the community is in its initial state of having one
+             vertex only.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.OnMergedCommunities(Microsoft.NodeXL.Algorithms.Community,Microsoft.NodeXL.Algorithms.Community,Microsoft.NodeXL.Algorithms.Community,System.Single,Microsoft.NodeXL.Algorithms.DeltaQMaxHeap)">
+             <summary>
+             Gets called when two communities merge and one or both of them were
+             connected to this community.
+             </summary>
+            
+             <param name="mergedCommunity1">
+             The first community that was merged.
+             </param>
+            
+             <param name="mergedCommunity2">
+             The second community that was merged.
+             </param>
+            
+             <param name="newMergedCommunity">
+             The new community that the communities were merged into.
+             </param>
+            
+             <param name="newCommunityPairDeltaQ">
+             The new delta Q value for the community pair that connects this
+             community to the merged community.
+             </param>
+            
+             <param name="deltaQMaxHeap">
+             Max heap, used to keep track of the maximum delta Q value in each
+             community.  There is an element in the max heap for each community.
+             The key is the Community and the value is the Community's maximum
+             delta Q.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.ToString">
+             <summary>
+             Formats the value of the current instance using the default format. 
+             </summary>
+            
+             <returns>
+             The formatted string.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.GetHashCode">
+             <summary>
+             Serves as a hash function for a particular type. 
+             </summary>
+            
+             <returns>
+             A hash code for the current Object.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.Community.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.DeltaQNotSet">
+            <summary>
+            Value of <see cref="P:Microsoft.NodeXL.Algorithms.CommunityPair.DeltaQ"/> and <see cref="P:Microsoft.NodeXL.Algorithms.Community.MaximumDeltaQ"/> when a delta Q hasn't been set yet.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.m_iID">
+            Unique community ID.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.m_oCommunityPairs">
+            SortedList of CommunityPair objects.  The sort key is the Community.ID
+            of the CommunityPair's Community2, and the value is the CommunityPair.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.m_oCommunityPairWithMaximumDeltaQ">
+            The CommunityPair object that has the maximum delta Q value in the
+            m_oCommunityPairs list, or null.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.m_oVertices">
+            Linked list of the vertices that this community contains.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.Community.m_iDegree">
+            The sum of the degrees for the vertices in m_oVertices.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.ID">
+             <summary>
+             Gets or sets a unique community ID.
+             </summary>
+            
+             <value>
+             A unique community ID, as an Int32.  The default is 0.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.CommunityPairs">
+             <summary>
+             Gets a sorted list of <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/> objects that this
+             community contains.
+             </summary>
+            
+             <value>
+             A SortedList of <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/> objects.  The sort key is
+             the ID of CommunityPair.<see cref="P:Microsoft.NodeXL.Algorithms.CommunityPair.Community2"/> and the
+             value is the <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/>.  The default is an empty
+             SortedList.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.CommunityPairWithMaximumDeltaQ">
+             <summary>
+             Gets or sets the <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/> object that has the
+             maximum delta Q value.
+             </summary>
+            
+             <value>
+             The <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/> object that has the maximum delta Q
+             value in the <see cref="P:Microsoft.NodeXL.Algorithms.Community.CommunityPairs"/> list.  The default is null.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.MaximumDeltaQ">
+             <summary>
+             Gets the maximum delta Q value among all community pairs within <see cref="P:Microsoft.NodeXL.Algorithms.Community.CommunityPairs"/>.
+             </summary>
+            
+             <value>
+             The maximum delta Q value, as a Single.  The default is <see cref="F:Microsoft.NodeXL.Algorithms.Community.DeltaQNotSet"/>.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.Vertices">
+             <summary>
+             Gets a collection of the vertices that this community contains.
+             </summary>
+            
+             <value>
+             A collection of <see cref="T:Microsoft.NodeXL.Core.IVertex"/> objects.  The default is an
+             empty collection.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.Community.Degree">
+             <summary>
+             Gets or sets the sum of the degrees for the vertices that this
+             community contains.
+             </summary>
+            
+             <value>
+             The sum of the degrees for the community's vertices, as an Int32.  The
+             default is zero.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator">
+             <summary>
+             Calculates the in-degree, out-degree, and degree for each of the graph's
+             vertices.
+             </summary>
+            
+             <remarks>
+             This calculator includes all self-loops in its calculations.  It also
+             includes all parallel edges, which may not be expected by the user.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase">
+            <summary>
+            Base class for classes that implement <see cref="T:Microsoft.NodeXL.Algorithms.IGraphMetricCalculator"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.IGraphMetricCalculator">
+             <summary>
+             Supports the calculation of one set of graph metrics.
+             </summary>
+            
+             <remarks>
+             There is a family of classes that calculate metrics for a graph.  Each
+             class calculates a set of one or more related metrics, and each class
+             implements this interface.
+             </remarks>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.IGraphMetricCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.DefaultSnapGraphMetricCalculatorFileName">
+            Default file name of the executable that computes graph metrics using
+            the SNAP library.  Not used if m_sSnapGraphMetricCalculatorPath is set.
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.#cctor">
+            <summary>
+            Static constructor for the <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SetSnapGraphMetricCalculatorPath(System.String)">
+             <summary>
+             Sets the path to the executable that calculates graph metrics using
+             the SNAP library.
+             </summary>
+            
+             <param name="snapGraphMetricCalculatorPath">
+             Full path to the executable.  Sample:
+             "C:\MyProgram\SnapGraphMetricCalculator.exe".
+             </param>
+            
+             <remarks>
+             Some of the derived classes use a separate executable to do their graph
+             metric calculations.  This executable, which is custom built for NodeXL
+             and is provided with the NodeXL source code, uses the SNAP library
+             created by Jure Leskovec at Stanford.  The SNAP code is written in C++
+             and is optimized for speed and scalability, so it can calculate certain
+             graph metrics much faster than could be done in C# code.
+            
+             <para>
+             By default, the NodeXL build process copies the executable, which is
+             named SnapGraphMetricCalculator.exe, to the Algorithm project's output
+             directory, which is either bin\Debug or bin\Release.  Also by default,
+             derived classes look for this executable in the same folder as the
+             Algorithm assembly.  That means that for many projects, the executable
+             will be automatically found and this method does not need to be called.
+             </para>
+            
+             <para>
+             If your application's deployment places the executable somewhere else,
+             however, you must call this static method once to provide the derived
+             classes with the executable's path.
+             </para>
+            
+             <para>
+             A future release may wrap the SNAP library in an interop DLL,
+             eliminating the need for a separate executable.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.CalculateProgressInPercent(System.Int32,System.Int32)">
+             <summary>
+             Calculates progress in percent.
+             </summary>
+            
+             <param name="calculationsCompleted">
+             Number of calculations that have been performed so far.
+             </param>
+            
+             <param name="totalCalculations">
+             Total number of calculations.  Can be zero.
+             </param>
+            
+             <returns>
+             The progress of the calculations, in percent.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.ReportProgress(System.Int32,System.Int32,System.ComponentModel.BackgroundWorker)">
+             <summary>
+             Reports progress to the calling thread.
+             </summary>
+            
+             <param name="iCalculationsSoFar">
+             Number of calculations that have been performed so far.
+             </param>
+            
+             <param name="iTotalCalculations">
+             Total number of calculations.
+             </param>
+            
+             <param name="oBackgroundWorker">
+             The <see cref="T:System.ComponentModel.BackgroundWorker"/> object that is performing all graph
+             metric calculations.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.ReportCannotCalculateGraphMetrics(System.String)">
+             <summary>
+             Throws an exception to the calling thread indicating a condition that
+             prevents the graph metrics from being calculated.
+             </summary>
+            
+             <param name="sMessage">
+             Error message, suitable for displaying to the user.
+             </param>
+            
+             <remarks>
+             This method throws a <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricException"/>.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.CalculateEdgesInFullyConnectedNeighborhood(System.Int32,System.Boolean)">
+             <summary>
+             Calculates the number of edges there would be in the neighborhood of a
+             vertex if the neighborhood were fully connected.
+             </summary>
+            
+             <param name="iAdjacentVertices">
+             The number of the vertex's adjacent vertices.
+             </param>
+            
+             <param name="bGraphIsDirected">
+             true if the graph is directed, false if it's undirected.
+             </param>
+            
+             <returns>
+             The number of edges in the fully connected neighborhood.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.CalculateSnapGraphMetrics(Microsoft.NodeXL.Core.IGraph,Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics)">
+             <summary>
+             Calculates one or more graph metrics using the SNAP executable.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.
+             </param>
+            
+             <param name="eSnapGraphMetrics">
+             One or more graph metrics to calculate.
+             </param>
+            
+             <returns>
+             Full path to a temporary output file containing the calculated metrics.
+             The caller must delete this file after it is done with it.
+             </returns>
+            
+             <remarks>
+             If an error occurs while calling the executable, an IOException is
+             thrown.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.ParseSnapInt32GraphMetricValue(System.String[],System.Int32)">
+             <summary>
+             Parses an Int32 graph metric value read from the output file created by
+             the SNAP command-line executable.
+             </summary>
+            
+             <param name="asFieldsFromSnapOutputFileLine">
+             Fields read from one line of the output file created by the SNAP
+             command-line executable.
+             </param>
+            
+             <param name="iFieldIndex">
+             The zero-based index of the field to parse.
+             </param>
+            
+             <returns>
+             The parsed Int32 graph metric value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.ParseSnapDoubleGraphMetricValue(System.String[],System.Int32)">
+             <summary>
+             Parses a Double graph metric value read from the output file created by
+             the SNAP command-line executable.
+             </summary>
+            
+             <param name="asFieldsFromSnapOutputFileLine">
+             Fields read from one line of the output file created by the SNAP
+             command-line executable.
+             </param>
+            
+             <param name="iFieldIndex">
+             The zero-based index of the field to parse.
+             </param>
+            
+             <returns>
+             The parsed Double graph metric value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.TryCallSnapGraphMetricCalculator(System.String,System.String@)">
+             <summary>
+             Calls the SNAP command-line executable.
+             </summary>
+            
+             <param name="sArguments">
+             Command line arguments.
+             </param>
+            
+             <param name="sStandardError">
+             Where the standard error string gets stored if false is returned.
+             </param>
+            
+             <returns>
+             true if the executable was successfully called, false if the executable
+             reported an error via the StandardError stream.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.m_sSnapGraphMetricCalculatorPath">
+            Path to the executable that computes graph metrics using the SNAP
+            library, or null to use a default path.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics">
+             <summary>
+             Specifies one or more graph metrics that can be calculated by the SNAP
+             library.
+             </summary>
+            
+             <remarks>
+             See the GraphMetrics enumeration in the Snap/GraphMetricCalculator
+             project for details on how graph metrics must be specified.
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.ClosenessCentrality">
+            <summary>
+            Closeness centrality.  Type: Per-vertex.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.BetweennessCentrality">
+            <summary>
+            Betweenness centrality.  Type: Per-vertex.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.EigenvectorCentrality">
+            <summary>
+            Eigenvector centrality.  Type: Per-vertex.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.PageRank">
+            <summary>
+            PageRank.  Type: Per-vertex.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.GeodesicDistances">
+            <summary>
+            Maximum geodesic distance, also known as graph diameter, and
+            average geodesic distance.  Type: Per-graph.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.GirvanNewmanClusters">
+            <summary>
+            Clusters using the Girvan-Newman algorithm.  Type: Clusters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.ClausetNewmanMooreClusters">
+            <summary>
+            Clusters using the Clauset-Newman-Moore algorithm.  Type: Clusters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics.None">
+            <summary>
+            No graph metrics.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.VerticesPerProgressReport">
+            Number of vertices that are processed before progress is reported and
+            the cancellation flag is checked.
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.CalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Calculate the graph metrics.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <returns>
+             The graph metrics.  There is one key/value pair for each vertex in the
+             graph.  The key is the IVertex.ID and the value is a <see cref="T:Microsoft.NodeXL.Algorithms.VertexDegrees"/> object containing the degree metrics for the
+             vertex.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.Dictionary{System.Int32,Microsoft.NodeXL.Algorithms.VertexDegrees}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             key/value pair for each vertex in the graph.  The key is the IVertex.ID
+             and the value is a <see cref="T:Microsoft.NodeXL.Algorithms.VertexDegrees"/> object containing the
+             degree metrics for the vertex.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.CalculateVertexDegrees(Microsoft.NodeXL.Core.IVertex,System.Int32@,System.Int32@)">
+             <summary>
+             Calculates a vertex's in-degree and out-degree.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to calculate the in-degree and out-degree for.
+             </param>
+            
+             <param name="iInDegree">
+             Where the vertex's in-degree gets stored.
+             </param>
+            
+             <param name="iOutDegree">
+             Where the vertex's out-degree gets stored.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.VertexDegreeCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.VertexDegrees">
+             <summary>
+             Stores the degree metrics for one vertex.
+             </summary>
+            
+             <remarks>
+             Technically, in-degree and out-degree are valid only for directed graphs
+             and degree is valid only for undirected graphs, but all three metrics are
+             provided by this class anyway.  Degree is the sum of in-degree and
+             out-degree.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegrees.#ctor(System.Int32,System.Int32)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.VertexDegrees"/> class.
+             </summary>
+            
+             <param name="inDegree">
+             The vertex's in-degree.
+             </param>
+            
+             <param name="outDegree">
+             The vertex's out-degree.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.VertexDegrees.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.VertexDegrees.m_iInDegree">
+            In-degree.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.VertexDegrees.m_iOutDegree">
+            Out-degree.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.VertexDegrees.InDegree">
+             <summary>
+             Gets the vertex's in-degree.
+             </summary>
+            
+             <value>
+             The vertex's in-degree.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.VertexDegrees.OutDegree">
+             <summary>
+             Gets the vertex's out-degree.
+             </summary>
+            
+             <value>
+             The vertex's out-degree.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.VertexDegrees.Degree">
+             <summary>
+             Gets the vertex's degree.
+             </summary>
+            
+             <value>
+             The vertex's degree.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase">
+             <summary>
+             Calculates one per-vertex graph metric using the SNAP graph library.
+             </summary>
+            
+             <remarks>
+             This is a base class for several classes that use the SNAP graph library
+             to calculate one per-vertex graph metric in the <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics"/> enumeration.
+             "Per-vertex" means that a metric is computed for each vertex in the graph,
+             as opposed to "per-graph," for which there is a single metric value for the
+             entire graph.
+            
+             <para>
+             If a vertex is isolated, its metric value is zero.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase">
+             <summary>
+             Calculates one graph metric of type Double for each of the graph's
+             vertices.
+             </summary>
+            
+             <remarks>
+             This is the base class for several derived classes that calculate a graph
+             metric of type Double.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase.CalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Calculate the graph metrics.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <returns>
+             The graph metrics.  There is one key/value pair for each vertex in the
+             graph.  The key is the IVertex.ID and the value is the vertex's metric,
+             as a Double.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.Dictionary{System.Int32,System.Double}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             key/value pair for each vertex in the graph.  The key is the IVertex.ID
+             and the value is the vertex's metric, as a Double.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneDoubleGraphMetricCalculatorBase.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.#ctor(Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics,System.String,System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase"/> class.
+             </summary>
+            
+             <param name="snapGraphMetric">
+             The graph metric to calculate.  Must be just one value in the <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics"/> enumeration.
+             </param>
+            
+             <param name="graphMetricDescription">
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </param>
+            
+             <param name="expectedHeaderLineInOutputFile">
+             The expected header line in the output file created by SNAP.  This is
+             used for diagnostic purposes.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.Dictionary{System.Int32,System.Double}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             key/value pair for each vertex in the graph.  The key is the IVertex.ID
+             and the value is the vertex's metric, as a Double.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.m_eSnapGraphMetric">
+            The graph metric to calculate.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.m_sGraphMetricDescription">
+            A description of the graph metrics calculated by the derived class.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.m_sExpectedHeaderLineInOutputFile">
+            The expected header line in the output file created by SNAP.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OneSnapGraphMetricCalculatorBase.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.GraphMetricException">
+            <summary>
+            Represents an exception thrown when a graph metric calculator detects a
+            condition that prevents its graph metrics from being calculated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricException.#ctor(System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.GraphMetricException"/>
+             class.
+             </summary>
+            
+             <param name="message">
+             Error message, suitable for displaying to the user.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.GraphMetricException.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities">
+            <summary>
+            Stores the centrality metrics that are calculated by <see cref="T:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator"/> for one vertex.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.m_dBetweennessCentrality">
+            Betweenness centrality.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.m_dClosenessCentrality">
+            Closeness centrality.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.BetweennessCentrality">
+             <summary>
+             Gets or sets the vertex's betweenness centrality.
+             </summary>
+            
+             <value>
+             The vertex's betweenness centrality, as a Double.  The default is 0.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities.ClosenessCentrality">
+             <summary>
+             Gets or sets the vertex's closeness centrality.
+             </summary>
+            
+             <value>
+             The vertex's closeness centrality, as a Double.  The default is 0.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.PageRankCalculator">
+             <summary>
+             Calculates the PageRanks for each of the graph's vertices.
+             </summary>
+            
+             <remarks>
+             If a vertex is isolated, its PageRank is zero.
+            
+             <para>
+             The PageRanks are calculated using the SNAP graph library.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.PageRankCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.PageRankCalculator"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.PageRankCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.OverallMetricCalculator">
+             <summary>
+             Calculates the overall metrics for the graph.
+             </summary>
+            
+             <remarks>
+             The calculations for <see cref="P:Microsoft.NodeXL.Algorithms.OverallMetrics.GraphDensity"/> skip all
+             self-loops and duplicate edges, which would render the density invalid.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.OverallMetricCalculator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Calculate the graph metrics.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <returns>
+             The graph metrics.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,Microsoft.NodeXL.Algorithms.OverallMetrics@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CountSelfLoops(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Counts the number of self-loops in the graph.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.
+             </param>
+            
+             <returns>
+             The number of self-loops in the graph.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CalculateGraphDensity(Microsoft.NodeXL.Core.IGraph,System.Int32,System.Int32)">
+             <summary>
+             Calculates the graph's density.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.
+             </param>
+            
+             <param name="iVertices">
+             The number of vertices in the graph.
+             </param>
+            
+             <param name="iTotalEdgesAfterMergingDuplicatesNoSelfLoops">
+             The total number of edges the graph would have if its duplicate edges
+             were merged and all self-loops were removed.
+             </param>
+            
+             <returns>
+             The graph density, or null if it couldn't be calculated.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CalculateConnectedComponentMetrics(Microsoft.NodeXL.Core.IGraph,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+             <summary>
+             Calculates the graph's connected component metrics.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.
+             </param>
+            
+             <param name="iConnectedComponents">
+             Where the number of connected components in the graph gets stored.
+             </param>
+            
+             <param name="iSingleVertexConnectedComponents">
+             Where the number of connected components in the graph that have one
+             vertex gets stored.
+             </param>
+            
+             <param name="iMaximumConnectedComponentVertices">
+             Where the maximum number of vertices in a connected component gets
+             stored.
+             </param>
+            
+             <param name="iMaximumConnectedComponentEdges">
+             Where the maximum number of edges in a connected component gets stored.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CalculateGeodesicDistances(Microsoft.NodeXL.Core.IGraph,System.Nullable{System.Int32}@,System.Nullable{System.Double}@)">
+             <summary>
+             Calculates the graph's maximum and average geodesic distances.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.
+             </param>
+            
+             <param name="iMaximumGeodesicDistance">
+             Where the maximum geodesic distance in the graph gets stored.  Gets set
+             to null if the graph is empty.
+             </param>
+            
+             <param name="dAverageGeodesicDistance">
+             Where the average geodesic distance in the graph gets stored.  Gets set
+             to null if the graph is empty.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.CountUniqueEdges(System.Collections.Generic.LinkedList{Microsoft.NodeXL.Core.IVertex})">
+             <summary>
+             Counts the unique edges in a connected component.
+             </summary>
+            
+             <param name="oConnectedComponent">
+             The connected component to count edges for.
+             </param>
+            
+             <returns>
+             The number of unique edges in <paramref name="oConnectedComponent" />.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetricCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.DeltaQMaxHeap">
+             <summary>
+             Represents a max heap used by <see cref="T:Microsoft.NodeXL.Algorithms.ClusterCalculator"/> to keep
+             track of the maximum delta Q value in each community.
+            
+             <para>
+             There is an element in the max heap for each community.  The key is the
+             Community and the value is the Community's maximum delta Q.
+             </para>
+            
+             </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DeltaQMaxHeap.#ctor(System.Int32)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.DeltaQMaxHeap"/> class
+             with a specified initial capacity.
+             </summary>
+            
+             <param name="initialCapacity">
+             Initial capacity.  Must be non-negative.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DeltaQMaxHeap.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.DeltaQComparer">
+            <summary>
+            Compares two delta Q values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DeltaQComparer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.DeltaQComparer"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DeltaQComparer.Compare(System.Single,System.Single)">
+             <summary>
+             Compares two objects and returns a value indicating whether one is less
+             than, equal to, or greater than the other.
+             </summary>
+            
+             <param name="x">
+             The first object to compare.
+             </param>
+            
+             <param name="y">
+             The second object to compare.
+             </param>
+            
+             <returns>
+             See the interface definition.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DeltaQComparer.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator">
+             <summary>
+             Calculates the clustering coefficient for each of the graph's vertices.
+             </summary>
+            
+             <remarks>
+             See this article for a definition of clustering coefficient:
+            
+             <para>
+             http://en.wikipedia.org/wiki/Clustering_coefficient
+             </para>
+            
+             <para>
+             This calculator skips all self-loops, which would render the calculations
+             invalid.  The calculations are rendered invalid if the graph has duplicate
+             edges, however.  You can check for duplicate edges with <see cref="T:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector"/>.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.VerticesPerProgressReport">
+            Number of vertices that are processed before progress is reported and
+            the cancellation flag is checked.
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.Dictionary{System.Int32,System.Double}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             key/value pair for each vertex in the graph.  The key is the IVertex.ID
+             and the value is the vertex's metric, as a Double.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.CalculateClusteringCoefficient(Microsoft.NodeXL.Core.IVertex,System.Boolean)">
+             <summary>
+             Calculates a vertex's clustering coefficient.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to calculate the clustering coefficient for.
+             </param>
+            
+             <param name="bGraphIsDirected">
+             true if the graph is directed, false if it's undirected.
+             </param>
+            
+             <returns>
+             The vertex's clustering coefficient.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.ClusteringCoefficientCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.CommunityPair">
+            <summary>
+            Represents a pair of communities used by <see cref="T:Microsoft.NodeXL.Algorithms.ClusterCalculator"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.CommunityPair.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.CommunityPair"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.CommunityPair.ToString">
+             <summary>
+             Formats the value of the current instance using the default format. 
+             </summary>
+            
+             <returns>
+             The formatted string.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.CommunityPair.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.CommunityPair.m_oCommunity1">
+            The first community in the pair.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.CommunityPair.m_oCommunity2">
+            The second community in the pair.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.CommunityPair.m_fDeltaQ">
+            Maximum delta Q value among all community pairs within
+            m_oCommunityPairs.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.CommunityPair.Community1">
+             <summary>
+             Gets or sets the first community in the pair.
+             </summary>
+            
+             <value>
+             The first community in the pair, as a <see cref="T:Microsoft.NodeXL.Algorithms.Community"/>.  The
+             default is null.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.CommunityPair.Community2">
+             <summary>
+             Gets or sets the second community in the pair.
+             </summary>
+            
+             <value>
+             The second community in the pair, as a <see cref="T:Microsoft.NodeXL.Algorithms.Community"/>.  The
+             default is null.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.CommunityPair.DeltaQ">
+             <summary>
+             Gets or sets the delta Q for this community pair.
+             </summary>
+            
+             <value>
+             The delta Q for this community pair, as a Single.  The default is <see cref="F:Microsoft.NodeXL.Algorithms.Community.DeltaQNotSet"/>.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.ClusterCalculator">
+             <summary>
+             Partitions a graph into clusters.
+             </summary>
+            
+             <remarks>
+             Use the <see cref="P:Microsoft.NodeXL.Algorithms.ClusterCalculator.Algorithm"/> property to specify the clustering
+             algorithm to use.
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusterCalculator.MergeCyclesPerProgressReport">
+            Number of community merge cycles before progress is reported and the
+            cancellation flag is checked.
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.ClusterCalculator"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.CalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Calculate the graph metrics.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <returns>
+             There is one <see cref="T:Microsoft.NodeXL.Algorithms.Community"/> object in the ICollection for
+             each calculated cluster.  The vertices in each cluster can be obtained
+             via the Community.<see cref="P:Microsoft.NodeXL.Algorithms.Community.Vertices"/> property.  All the
+             other properties and methods of the  <see cref="T:Microsoft.NodeXL.Algorithms.Community"/> class are
+             meant for internal use and should be ignored.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.ICollection{Microsoft.NodeXL.Algorithms.Community}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             <see cref="T:Microsoft.NodeXL.Algorithms.Community"/> object in the ICollection for each calculated
+             cluster.  The vertices in each cluster can be obtained via the
+             Community.<see cref="P:Microsoft.NodeXL.Algorithms.Community.Vertices"/> property.  All the other
+             properties and methods of the  <see cref="T:Microsoft.NodeXL.Algorithms.Community"/> class are meant
+             for internal use and should be ignored.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.TryCalculateClustersWakitaTsurumi(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.ICollection{Microsoft.NodeXL.Algorithms.Community}@)">
+             <summary>
+             Attempts to calculate clusters using the Wakita-Tsurumi algorithm.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="oBackgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="oGraphMetrics">
+             Where the graph metrics get stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+            
+             <remarks>
+             See the <see cref="F:Microsoft.NodeXL.Algorithms.ClusterAlgorithm.WakitaTsurumi"/> comments for
+             details on the algorithm used.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.TryCalculateClustersSnap(Microsoft.NodeXL.Core.IGraph,Microsoft.NodeXL.Algorithms.GraphMetricCalculatorBase.SnapGraphMetrics,System.ComponentModel.BackgroundWorker,System.Collections.Generic.ICollection{Microsoft.NodeXL.Algorithms.Community}@)">
+             <summary>
+             Attempts to calculate clusters using one of the algorithms implemented
+             by the SNAP graph library.
+             </summary>
+            
+             <param name="oGraph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="eSnapGraphMetric">
+             Specifies which SNAP algorithm to use.
+             </param>
+            
+             <param name="oBackgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="oGraphMetrics">
+             Where the graph metrics get stored if true is returned.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.CreateCommunities(Microsoft.NodeXL.Core.IVertexCollection,Microsoft.NodeXL.Core.IDGenerator)">
+             <summary>
+             Creates and populates a community for each of the graph's vertices.
+             </summary>
+            
+             <param name="oVertices">
+             The graph's vertices.
+             </param>
+            
+             <param name="oIDGenerator">
+             ID generator for new communities.
+             </param>
+            
+             <returns>
+             A linked list of Community objects, one for each of the graph's
+             vertices.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.InitializeDeltaQs(System.Collections.Generic.LinkedList{Microsoft.NodeXL.Algorithms.Community},Microsoft.NodeXL.Algorithms.DeltaQMaxHeap,System.Int32)">
+             <summary>
+             Initializes the delta Q values for each community.
+             </summary>
+            
+             <param name="oCommunities">
+             List of all communities.
+             </param>
+            
+             <param name="oDeltaQMaxHeap">
+             Max heap, used to keep track of the maximum delta Q value in each
+             community.  There is an element in the max heap for each community.
+             The key is the Community and the value is the Community's maximum
+             delta Q.
+             </param>
+            
+             <param name="iEdgesInGraph">
+             Number of edges in the graph.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.MergeCommunities(System.Collections.Generic.LinkedList{Microsoft.NodeXL.Algorithms.Community},Microsoft.NodeXL.Algorithms.CommunityPair,Microsoft.NodeXL.Algorithms.DeltaQMaxHeap,System.Int32,Microsoft.NodeXL.Core.IDGenerator)">
+             <summary>
+             Merges the communities in a community pair, updates the maximum delta Q
+             values for all communities, and updates the global max heap.
+             </summary>
+            
+             <param name="oCommunities">
+             List of all communities.
+             </param>
+            
+             <param name="oCommunityPairToMerge">
+             The community pair to merge.
+             </param>
+            
+             <param name="oDeltaQMaxHeap">
+             Max heap, used to keep track of the maximum delta Q value in each
+             community.  There is an element in the max heap for each community.
+             The key is the Community and the value is the Community's maximum
+             delta Q.
+             </param>
+            
+             <param name="iEdgesInGraph">
+             Number of edges in the graph.
+             </param>
+            
+             <param name="oIDGenerator">
+             ID generator for new communities.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ClusterCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusterCalculator.m_eAlgorithm">
+            The algorithm to use.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.ClusterCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.ClusterCalculator.Algorithm">
+             <summary>
+             Gets or sets the algorithm to use to partition the graph into clusters.
+             </summary>
+            
+             <value>
+             The algorithm to use, as a <see cref="T:Microsoft.NodeXL.Algorithms.ClusterAlgorithm"/>.  The
+             default is <see cref="F:Microsoft.NodeXL.Algorithms.ClusterAlgorithm.ClausetNewmanMoore"/>.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator">
+             <summary>
+             Calculates the betweenness and closeness centralities for each of the
+             graph's vertices.
+             </summary>
+            
+             <remarks>
+             If a vertex is isolated, its betweenness and closeness centralities are
+             zero.
+            
+             <para>
+             In a previous version, the centralities were calculated simultaneously by
+             this class using the algorithm described in the paper "A Faster Algorithm
+             for Betweenness Centrality," by Ulrik Brandes.  The paper can be found
+             here:
+             </para>
+            
+             <para>
+             http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf
+             </para>
+            
+             <para>
+             Section 4 of the paper explains how other centrality measures can be
+             computed within the same algorithm at little additional cost.  That is why
+             closeness centrality was calculated by this class along with betweenness.
+             </para>
+            
+             <para>
+             Starting with version 1.0.1.122 of NodeXL, the centralities are calculated
+             using the SNAP graph library, which is much faster than the previous NodeXL
+             code.  SNAP calculates betweenness and closeness centralities separately,
+             so it might make sense to split this class in two in a future release.  Or
+             would it make more sense to modify SNAP to calculate the two
+             simultaneously, as suggested by Brandes?
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator.CalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Calculate the graph metrics.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <returns>
+             The graph metrics.  There is one key/value pair for each vertex in the
+             graph.  The key is the IVertex.ID and the value is a <see cref="T:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities"/> object.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator.TryCalculateGraphMetrics(Microsoft.NodeXL.Core.IGraph,System.ComponentModel.BackgroundWorker,System.Collections.Generic.Dictionary{System.Int32,Microsoft.NodeXL.Algorithms.BrandesVertexCentralities}@)">
+             <summary>
+             Attempts to calculate the graph metrics while optionally running on a
+             background thread.
+             </summary>
+            
+             <param name="graph">
+             The graph to calculate metrics for.  The graph may contain duplicate
+             edges and self-loops.
+             </param>
+            
+             <param name="backgroundWorker">
+             The BackgroundWorker whose thread is calling this method, or null if
+             the method is being called by some other thread.
+             </param>
+            
+             <param name="graphMetrics">
+             Where the graph metrics get stored if true is returned.  There is one
+             key/value pair for each vertex in the graph.  The key is the IVertex.ID
+             and the value is a <see cref="T:Microsoft.NodeXL.Algorithms.BrandesVertexCentralities"/> object.
+             </param>
+            
+             <returns>
+             true if the graph metrics were calculated, false if the user wants to
+             cancel.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.BrandesFastCentralityCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector">
+             <summary>
+             Counts duplicate and unique edges in a graph.
+             </summary>
+            
+             <remarks>
+             The <see cref="P:Microsoft.NodeXL.Core.IIdentityProvider.Name"/> property on each of an
+             edge's vertices is used to test for duplicate edges.
+            
+             <para>
+             In a directed graph, (A,B) and (A,B) are considered duplicates.  (A,B) and
+             (B,A) are not duplicates.
+             </para>
+            
+             <para>
+             In an undirected graph, (A,B) and (A,B) are considered duplicates.  (A,B)
+             and (B,A) are also duplicates.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.#ctor(Microsoft.NodeXL.Core.IGraph)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector"/>
+             class.
+             </summary>
+            
+             <param name="graph">
+             Graph to check.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.CountEdges">
+            <summary>
+            Counts the edges and cache the results if they haven't already been
+            counted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.m_oGraph">
+            Graph to check.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.m_bEdgesCounted">
+            true if the edges have already been counted.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.m_iUniqueEdges">
+            If m_bEdgesCounted is true, this is the number of unique edges in
+            m_oGraph.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.m_iEdgesWithDuplicates">
+            If m_bEdgesCounted is true, this is the number of edges in m_oGraph
+            that have duplicates.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.m_iTotalEdgesAfterMergingDuplicatesNoSelfLoops">
+            If m_bEdgesCounted is true, this is the number of edges that would be
+            in m_oGraph if its duplicate edges were merged and all self-loops were
+            removed.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.GraphContainsDuplicateEdges">
+             <summary>
+             Gets a flag indicating whether the graph contains at least one pair
+             of duplicate edges.
+             </summary>
+            
+             <value>
+             true if the graph contains at least one pair of duplicate edges.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.EdgesWithDuplicates">
+             <summary>
+             Gets the number of edges in the graph that have duplicates.
+             </summary>
+            
+             <value>
+             The number of edges in the graph that have duplicates.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.UniqueEdges">
+             <summary>
+             Gets the number of unique edges in the graph.
+             </summary>
+            
+             <value>
+             The number of unique edges in the graph.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.DuplicateEdgeDetector.TotalEdgesAfterMergingDuplicatesNoSelfLoops">
+             <summary>
+             Gets the total number of edges the graph would have if its duplicate
+             edges were merged and all self-loops were removed.
+             </summary>
+            
+             <value>
+             The total number of edges the graph would have if its duplicate edges
+             were merged and all self-loops were removed.
+             </value>
+            
+             <remarks>
+             This class does not actually merge duplicate edges or remove
+             self-loops.
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.EigenvectorCentralityCalculator">
+             <summary>
+             Calculates the eigenvector centrality for each of the graph's vertices.
+             </summary>
+            
+             <remarks>
+             If a vertex is isolated, its eigenvector centrality is zero.
+            
+             <para>
+             Eigenvector centrality is defined in this article:
+             </para>
+            
+             <para>
+             http://en.wikipedia.org/wiki/Eigenvector_centrality#Eigenvector_centrality
+             </para>
+            
+             <para>
+             The eigenvector centralities are calculated using the SNAP graph library.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.EigenvectorCentralityCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.EigenvectorCentralityCalculator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.EigenvectorCentralityCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.ClusterAlgorithm">
+            <summary>
+            Specifies the algorithm used to partition a graph into clusters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusterAlgorithm.WakitaTsurumi">
+             <summary>
+             Use the Wakita-Tsurumi cluster algorithm.
+             </summary>
+            
+             <remarks>
+             The algorithm is described in "Finding Community Structure in
+             Mega-scale Social Networks," by Ken Wakita and Toshiyuki Tsurumi.  The
+             paper can be found here:
+            
+             <para>
+             http://arxiv.org/PS_cache/cs/pdf/0702/0702048v1.pdf
+             </para>
+            
+             <para>
+             NodeXL implements the data structure described in section 4.1 of the
+             paper.  It does not implement the heuristics described in section 4.2.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusterAlgorithm.GirvanNewman">
+             <summary>
+             Use the Girvan-Newman cluster algorithm.
+             </summary>
+            
+             <remarks>
+             The algorithm is described in "Community Structure in Social and
+             Biological Networks," by Michelle Girvan and M. E. J. Newman.  The
+             paper can be found here:
+            
+             <para>
+             http://www.santafe.edu/media/workingpapers/01-12-077.pdf
+             </para>
+            
+             <para>
+             This algorithm is implemented by the SNAP graph library.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.ClusterAlgorithm.ClausetNewmanMoore">
+             <summary>
+             Use the Clauset-Newman-Moore algorithm.
+             </summary>
+            
+             <remarks>
+             The algorithm is descibed in "Finding Community Structure in Very Large
+             Networks," by Aaron Clauset, M. E. J. Newman, and Cristopher Moore.
+             The paper can be found here:
+            
+             <para>
+             http://www.ece.unm.edu/ifis/papers/community-moore.pdf
+             </para>
+            
+             <para>
+             This algorithm is implemented by the SNAP graph library.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.OverallMetrics">
+            <summary>
+            Stores the overall metrics for a graph.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetrics.#ctor(Microsoft.NodeXL.Core.GraphDirectedness,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Double},System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Double})">
+             <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.NodeXL.Algorithms.OverallMetrics"/> class.
+             </summary>
+            
+             <param name="directedness">
+             The graph's directedness.
+             </param>
+            
+             <param name="uniqueEdges">
+             The number of unique edges.
+             </param>
+            
+             <param name="edgesWithDuplicates">
+             The number of edges that have duplicates.
+             </param>
+            
+             <param name="selfLoops">
+             The number of self-loops.
+             </param>
+            
+             <param name="vertices">
+             The number of vertices.
+             </param>
+            
+             <param name="graphDensity">
+             The graph's density, or null if the graph density can't be calculated.
+             </param>
+            
+             <param name="connectedComponents">
+             The number of connected components in the graph.
+             </param>
+            
+             <param name="singleVertexConnectedComponents">
+             The number of connected components in the graph that have one vertex.
+             </param>
+            
+             <param name="maximumConnectedComponentVertices">
+             The maximum number of vertices in a connected component.
+             </param>
+            
+             <param name="maximumConnectedComponentEdges">
+             The maximum number of edges in a connected component.
+             </param>
+            
+             <param name="maximumGeodesicDistance">
+             The maximum geodesic distance in the graph, or null if not available.
+             </param>
+            
+             <param name="averageGeodesicDistance">
+             The average geodesic distance in the graph, or null if not available.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.OverallMetrics.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_eDirectedness">
+            The graph's directedness.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iUniqueEdges">
+            The number of unique edges.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iEdgesWithDuplicates">
+            The number of edges that have duplicates.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iSelfLoops">
+            The number of self-loops.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iVertices">
+            The number of vertices.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_dGraphDensity">
+            The graph's density, or NoGraphDensity.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iConnectedComponents">
+            The number of connected components in the graph.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iSingleVertexConnectedComponents">
+            The number of connected components in the graph that have one vertex.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iMaximumConnectedComponentVertices">
+            The maximum number of vertices in a connected component.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iMaximumConnectedComponentEdges">
+            The maximum number of edges in a connected component.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_iMaximumGeodesicDistance">
+            The maximum geodesic distance in the graph, or null if not available.
+        </member>
+        <member name="F:Microsoft.NodeXL.Algorithms.OverallMetrics.m_dAverageGeodesicDistance">
+            The average geodesic distance in the graph, or null if not available.
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.Directedness">
+             <summary>
+             Gets the graph's directedness.
+             </summary>
+            
+             <value>
+             The graph's directedness.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.UniqueEdges">
+             <summary>
+             Gets the number of unique edges.
+             </summary>
+            
+             <value>
+             The number of unique edges.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.EdgesWithDuplicates">
+             <summary>
+             Gets the number of edges that have duplicates.
+             </summary>
+            
+             <value>
+             The number of edges that have duplicates.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.TotalEdges">
+             <summary>
+             Gets the total number of edges.
+             </summary>
+            
+             <value>
+             The total number of edges.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.SelfLoops">
+             <summary>
+             Gets the number of self-loops.
+             </summary>
+            
+             <value>
+             The number of self-loops.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.Vertices">
+             <summary>
+             Gets the number of vertices.
+             </summary>
+            
+             <value>
+             The number of vertices.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.GraphDensity">
+             <summary>
+             Gets the graph's density.
+             </summary>
+            
+             <value>
+             The graph's density, or null if the graph density can't be calculated.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.ConnectedComponents">
+             <summary>
+             Gets the number of connected components in the graph.
+             </summary>
+            
+             <value>
+             The number of connected components in the graph.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.SingleVertexConnectedComponents">
+             <summary>
+             Gets the number of connected components in the graph that have one
+             vertex.
+             </summary>
+            
+             <value>
+             The number of connected components in the graph that have one vertex.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.MaximumConnectedComponentVertices">
+             <summary>
+             Gets the maximum number of vertices in a connected component.
+             </summary>
+            
+             <value>
+             The maximum number of vertices in a connected component.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.MaximumConnectedComponentEdges">
+             <summary>
+             Gets the maximum number of edges in a connected component.
+             </summary>
+            
+             <value>
+             The maximum number of edges in a connected component.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.MaximumGeodesicDistance">
+             <summary>
+             Gets the maximum geodesic distance in the graph.
+             </summary>
+            
+             <value>
+             The maximum geodesic distance in the graph, or null if not available.
+             </value>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.OverallMetrics.AverageGeodesicDistance">
+             <summary>
+             Gets the average geodesic distance in the graph.
+             </summary>
+            
+             <value>
+             The average geodesic distance in the graph, or null if not available.
+             </value>
+        </member>
+        <member name="T:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator">
+            <summary>
+            Calculates the strongly connected components for a specified graph.
+            </summary>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.CalculateStronglyConnectedComponents(Microsoft.NodeXL.Core.IGraph,System.Boolean)">
+             <overloads>
+             Calculates a set of strongly connected components.
+             </overloads>
+            
+             <summary>
+             Calculates the strongly connected components for a specified graph.
+             </summary>
+            
+             <param name="graph">
+             Graph to get the strongly connected components for.
+             </param>
+            
+             <param name="sortAscending">
+             true to sort the components by increasing vertex count, false to sort
+             them by decreasing vertex count.
+             </param>
+            
+             <returns>
+             A list of LinkedLists of vertices.  Each LinkedList of vertices
+             comprises a strongly connected component of the graph.  The components
+             are sorted into groups by vertex count, in the order specified by
+             <paramref name="sortAscending"/>.  If the <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.SortableLayoutOrderSet"/> key is set on the
+             graph, then the components within each group are further sorted by the
+             smallest <see cref="F:Microsoft.NodeXL.Core.ReservedMetadataKeys.SortableLayoutOrder"/> value
+             on the vertices within each component.
+             </returns>
+            
+             <remarks>
+             This method uses Tarjan's strongly connected components algorithm,
+             outlined here:
+            
+             <para>
+             http://en.wikipedia.org/wiki/
+             Tarjan%27s_strongly_connected_components_algorithm
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.CalculateStronglyConnectedComponents(System.Collections.Generic.ICollection{Microsoft.NodeXL.Core.IVertex},Microsoft.NodeXL.Core.IGraph,System.Boolean)">
+             <summary>
+             Calculates the strongly connected components for a specified set of
+             vertices.
+             </summary>
+            
+             <param name="vertices">
+             Vertices to get the strongly connected components for.
+             </param>
+            
+             <param name="graph">
+             The graph the vertices belong to.
+             </param>
+            
+             <param name="sortAscending">
+             true to sort the components by increasing vertex count, false to sort
+             them by decreasing vertex count.
+             </param>
+            
+             <returns>
+             A list of LinkedLists of vertices.  See the other method overload for
+             more details.
+             </returns>
+            
+             <remarks>
+             This method uses Tarjan's strongly connected components algorithm,
+             outlined here:
+            
+             <para>
+             http://en.wikipedia.org/wiki/
+             Tarjan%27s_strongly_connected_components_algorithm
+             </para>
+            
+             <para>
+             If a vertex specified in <paramref name="vertices" /> is strongly
+             connected to one or more vertices, those vertices are included in the
+             returned List even if they are not included in the <paramref
+             name="vertices" /> collection.
+             </para>
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.RunTarjanAlgorithm(Microsoft.NodeXL.Core.IVertex,System.Collections.Generic.Stack{Microsoft.NodeXL.Core.IVertex},System.Collections.Generic.List{System.Collections.Generic.LinkedList{Microsoft.NodeXL.Core.IVertex}},System.Int32@)">
+             <summary>
+             Runs the Tarjan algorithm on one vertex.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to run the algorithm on.
+             </param>
+            
+             <param name="oStack">
+             Stack used by the algorithm.
+             </param>
+            
+             <param name="oStronglyConnectedComponents">
+             List to add the strongly connected components to.
+             </param>
+            
+             <param name="iNextIndex">
+             Index to assign to <paramref name="oVertex" />.  Gets incremented.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.SetIndex(Microsoft.NodeXL.Core.IVertex,System.Int32)">
+             <summary>
+             Sets the Index value for a vertex.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to set the Index value for.
+             </param>
+            
+             <param name="iIndex">
+             The Index value.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.GetIndex(Microsoft.NodeXL.Core.IVertex)">
+             <summary>
+             Gets the Index value for a vertex.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to get the Index value for.  The vertex must contain the
+             value; an exception is thrown if the value doesn't exist in the
+             vertex's metadata.
+             </param>
+            
+             <returns>
+             The vertex's Index value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.SetLowLink(Microsoft.NodeXL.Core.IVertex,System.Int32)">
+             <summary>
+             Sets the LowLink value for a vertex.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to set the LowLink value for.
+             </param>
+            
+             <param name="iLowLink">
+             The LowLink value.
+             </param>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.GetLowLink(Microsoft.NodeXL.Core.IVertex)">
+             <summary>
+             Gets the LowLink value for a vertex.
+             </summary>
+            
+             <param name="oVertex">
+             The vertex to get the LowLink value for.  The vertex must contain the
+             value; an exception is thrown if the value doesn't exist in the
+             vertex's metadata.
+             </param>
+            
+             <returns>
+             The vertex's LowLink value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.SortStronglyConnectedComponents(System.Collections.Generic.List{System.Collections.Generic.LinkedList{Microsoft.NodeXL.Core.IVertex}},Microsoft.NodeXL.Core.IGraph,System.Boolean)">
+             <summary>
+             Sorts the strongly connected components.
+             </summary>
+            
+             <param name="oStronglyConnectedComponents">
+             Unsorted List of strongly connected components.
+             </param>
+            
+             <param name="oGraph">
+             The graph the vertices belong to.
+             </param>
+            
+             <param name="bSortAscending">
+             true to sort the components by increasing vertex count, false to sort
+             them by decreasing vertex count.
+             </param>
+            
+             <remarks>
+             See the remarks in the calling method for details on how the sort is
+             performed.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.GetSmallestSortableLayoutOrder(System.Collections.Generic.LinkedList{Microsoft.NodeXL.Core.IVertex})">
+             <summary>
+             Gets the smallest layout sort order value for the vertices within a
+             strongly connected component.
+             </summary>
+            
+             <param name="oStronglyConnectedComponent">
+             The strongly connected component to get the smallest value for.
+             </param>
+            
+             <returns>
+             The smallest layout sort order value.
+             </returns>
+        </member>
+        <member name="M:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.AssertValid">
+            <summary>
+            Asserts if the object is in an invalid state.  Debug-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.NodeXL.Algorithms.ConnectedComponentCalculator.GraphMetricDescription">
+             <summary>
+             Gets a description of the graph metrics calculated by the
+             implementation.
+             </summary>
+            
+             <value>
+             A description suitable for use within the sentence "Calculating
+             [GraphMetricDescription]."
+             </value>
+        </member>
+    </members>
+</doc>
